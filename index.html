@@ -424,6 +424,10 @@
 
       /* Small screens */
       @media (max-width: 560px) {
+        .intro-panel {
+          background-position: center 25%;
+          filter: contrast(1.06) saturate(1.05);
+        }
         .nav {
           gap: 10px;
         }
@@ -448,6 +452,7 @@
         position: absolute;
         inset: 0;
         transform: translateX(-105%) scale(1.05);
+        transform-origin: center;
         will-change: transform, opacity;
         opacity: 1;
         background: linear-gradient(
@@ -457,8 +462,10 @@
             rgba(0, 0, 0, 0.78) 100%
           ),
           url("./TCS Sloenduro 2025.jpg");
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         background-size: cover;
-        background-position: center;
+        background-position: center 35%;
         filter: contrast(1.12) saturate(1.08);
       }
 
@@ -495,7 +502,8 @@
       }
 
       .intro.play .intro-panel {
-        animation: sfIntro 4s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+        animation: sfIntro var(--introDur, 4s) cubic-bezier(0.2, 0.85, 0.2, 1)
+          forwards;
       }
 
       .intro.fade {
@@ -689,13 +697,17 @@
         }
 
         // start
+        const isMobile = window.matchMedia("(max-width: 560px)").matches;
+        const duration = isMobile ? 3000 : 4000;
+
+        intro.style.setProperty("--introDur", isMobile ? "3s" : "4s");
+
         requestAnimationFrame(() => intro.classList.add("play"));
 
-        // po 4s fade-out + remove
         setTimeout(() => {
           intro.classList.add("fade");
           setTimeout(() => intro.remove(), 520);
-        }, 4000);
+        }, duration);
       })();
     </script>
   </body>
