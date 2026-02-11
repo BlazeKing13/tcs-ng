@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-02-11-sabotin",
+    "date": "2026-02-11",
+    "important": true,
+    "title": "Akcija: čiščenje odseka na Sabotinu",
+    "image": "./news-1.jpg",
+    "alt": "Akcija Sabotin",
+    "short": "V soboto dopoldne smo očistili del zaraščene mulatjere in odstranili vejevje.",
+    "long": "Zbrali smo se ob 8:00, razdelili orodje in v dveh skupinah uredili najbolj kritične točke.\n\nProsimo, da se na sveže urejenih odsekih prvih nekaj dni vozi z občutkom (mehkejša podlaga). Naslednjič ciljamo še na dodatno utrjevanje roba in čiščenje odtočnih jarkov."
+  },
+  {
+    "id": "2026-02-08-skabrjelka",
+    "date": "2026-02-08",
+    "important": false,
+    "title": "Stanje poti: Škabrjelka",
+    "image": "./news-2.jpg",
+    "alt": "Stanje poti Škabrjelka",
+    "short": "Večina linije je suha in hitra, na senčnih delih pa je še nekaj listja in drobnih vej.",
+    "long": "Priporočilo: po dežju se izogibaj drsenju po robovih in zaviraj čim bolj kontrolirano.\n\nČe opaziš podrto drevo ali večjo poškodbo, javi (mail/IG) z lokacijo in fotografijo."
+  },
+  {
+    "id": "2026-02-05-poziv",
+    "date": "2026-02-05",
+    "important": false,
+    "title": "Poziv: več pomoči na delovnih akcijah",
+    "image": "./news-3.jpg",
+    "alt": "Delovna akcija",
+    "short": "V zadnjem času se nas na akcijah prepogosto zbere premalo, dela pa je vedno več.",
+    "long": "Če lahko prispevaš 1–2 uri, je to ogromno. Orodje imamo, zbor je vedno enostaven in tempo prilagodimo ekipi.\n\nNamen je, da so poti urejene in varne, z minimalnimi vplivi na okolje."
+  }
+]
