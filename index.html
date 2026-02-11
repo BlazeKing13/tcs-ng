@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCS ng — Info tabla</title>
+
+    <!-- Clean, “društvo” fonti -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+          Roboto, Arial, sans-serif;
+        --font-head: "Oswald", "Inter", sans-serif;
+
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.72);
+        --hairline: rgba(255, 255, 255, 0.14);
+
+        --cta: rgba(255, 255, 255, 0.92);
+        --cta-hover: rgba(255, 255, 255, 1);
+        --cta-underline: rgba(255, 255, 255, 0.45);
+
+        --max: 980px;
+        --pad: 18px;
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--text);
+        background: #0b0b10;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Background image */
+      .bg {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.22) 0%,
+            rgba(0, 0, 0, 0.55) 58%,
+            rgba(0, 0, 0, 0.78) 100%
+          ),
+          url("./TCS.jpg");
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.03);
+        filter: contrast(1.02) saturate(1.25);
+      }
+
+      /* Super subtle grain */
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+        mix-blend-mode: overlay;
+      }
+
+      /* Sticky header: clean + minimal */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 14px var(--pad);
+        transition: background 220ms var(--ease), border-color 220ms var(--ease);
+        background: transparent;
+        border-bottom: 1px solid transparent;
+      }
+      header.scrolled {
+        background: rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav {
+        max-width: var(--max);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--text);
+        line-height: 1.05;
+      }
+
+      .nav-logo {
+        width: 26px; /* majhen, eleganten */
+        height: 26px;
+        object-fit: contain;
+        margin-bottom: 6px;
+        opacity: 0.95;
+      }
+
+      .brand strong {
+        font-family: var(--font-head);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .brand span {
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.4px;
+        margin-top: 2px;
+      }
+
+      /* Text links (no boxes) */
+      .nav a.link,
+      .cta-list a,
+      .contact-lines a,
+      .support a {
+        color: var(--cta);
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.15px;
+        position: relative;
+        padding: 6px 0;
+        transition: color 180ms var(--ease), opacity 180ms var(--ease);
+      }
+      .nav a.link::after,
+      .cta-list a::after,
+      .contact-lines a::after,
+      .support a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+        height: 1px;
+        width: 100%;
+        background: var(--cta-underline);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms var(--ease), background 180ms var(--ease);
+      }
+      .nav a.link:hover,
+      .cta-list a:hover,
+      .contact-lines a:hover,
+      .support a:hover {
+        color: var(--cta-hover);
+        opacity: 1;
+      }
+      .nav a.link:hover::after,
+      .cta-list a:hover::after,
+      .contact-lines a:hover::after,
+      .support a:hover::after {
+        transform: scaleX(1);
+        background: rgba(255, 255, 255, 0.75);
+      }
+
+      /* Centered layout */
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 56px var(--pad) 86px;
+      }
+
+      /* Hero: centered, airy, clean */
+      .hero {
+        min-height: calc(100vh - 86px);
+        display: grid;
+        place-items: center;
+        padding-top: 24px;
+      }
+
+      .hero-inner {
+        width: 100%;
+        max-width: 740px;
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+      }
+      .hero-inner.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero-logo {
+        width: min(320px, 70vw);
+        height: auto;
+        display: block;
+        margin-bottom: 12px;
+        opacity: 0.95;
+        transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 400ms;
+      }
+
+      /* zelo subtilen hover efekt */
+      .hero-logo:hover {
+        transform: scale(1.03);
+        opacity: 1;
+      }
+
+      .title {
+        font-family: var(--font-head);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1.05;
+        margin: 0;
+      }
+      .lead {
+        max-width: 66ch;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      .rule {
+        width: min(520px, 92vw);
+        height: 1px;
+        background: var(--hairline);
+        margin: 18px 0 6px;
+      }
+
+      /* Main CTAs: centered text list */
+      .cta-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .cta-list a {
+        font-size: 18px;
+        width: fit-content;
+      }
+
+      /* Sections: centered, readable width */
+      section {
+        padding-top: 40px;
+        margin-top: 40px;
+        border-top: 1px solid var(--hairline);
+        display: grid;
+        justify-items: center;
+      }
+
+      .section-inner {
+        width: 100%;
+        max-width: 860px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 650ms var(--ease), transform 650ms var(--ease);
+      }
+      .section-inner.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      h2 {
+        font-family: var(--font-head);
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+        font-weight: 600;
+        margin: 0 0 12px;
+        font-size: 22px;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 15px;
+        max-width: 86ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-lines {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Support section: collapsible (readable + doesn’t break page) */
+      details.support {
+        margin-top: 16px;
+        width: 100%;
+        max-width: 860px;
+        text-align: center;
+      }
+      details.support summary {
+        list-style: none;
+        cursor: pointer;
+        width: fit-content;
+        margin: 0 auto;
+        outline: none;
+        user-select: none;
+      }
+      details.support summary::-webkit-details-marker {
+        display: none;
+      }
+      .support-summary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--cta);
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        padding: 6px 0;
+        position: relative;
+      }
+      .support-summary::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+        height: 1px;
+        width: 100%;
+        background: var(--cta-underline);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms var(--ease), background 180ms var(--ease);
+      }
+      details.support summary:hover .support-summary::after {
+        transform: scaleX(1);
+        background: rgba(255, 255, 255, 0.75);
+      }
+      .chev {
+        display: inline-block;
+        transform: rotate(0deg);
+        transition: transform 200ms var(--ease);
+        opacity: 0.9;
+      }
+      details.support[open] .chev {
+        transform: rotate(180deg);
+      }
+
+      .support-content {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        padding-top: 8px;
+      }
+      .support-text {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+        max-width: 78ch;
+      }
+
+      .qr-wrap {
+        width: min(240px, 70vw);
+        aspect-ratio: 1 / 1;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .qr-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      .qr-placeholder {
+        font-family: var(--font-head);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+      }
+
+      .support a.donate-link {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      footer {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--pad) 28px;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      /* Small screens */
+      @media (max-width: 560px) {
+        .nav {
+          gap: 10px;
+        }
+        .brand span {
+          display: none;
+        }
+        main {
+          padding-top: 44px;
+        }
+      }
+
+      /* Intro overlay: slide-in + zoom + slide-out */
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .intro-panel {
+        position: absolute;
+        inset: 0;
+        transform: translateX(-105%) scale(1.05);
+        will-change: transform, opacity;
+        opacity: 1;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.55) 65%,
+            rgba(0, 0, 0, 0.78) 100%
+          ),
+          url("./TCS Sloenduro 2025.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: contrast(1.12) saturate(1.08);
+      }
+
+      /* vignette + cinematic */
+      /* .intro-vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            70% 55% at 50% 38%,
+            rgba(255, 255, 255, 0.08),
+            rgba(0, 0, 0, 0) 60%
+          ),
+          radial-gradient(
+            110% 90% at 50% 50%,
+            rgba(0, 0, 0, 0.18),
+            rgba(0, 0, 0, 0.78)
+          );
+        opacity: 0.95;
+      } */
+
+      @keyframes sfIntro {
+        0% {
+          transform: translateX(-105%) scale(1.08);
+        }
+        18% {
+          transform: translateX(0%) scale(1.03);
+        }
+        55% {
+          transform: translateX(0%) scale(1);
+        }
+        100% {
+          transform: translateX(105%) scale(1.05);
+        }
+      }
+
+      .intro.play .intro-panel {
+        animation: sfIntro 4s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+      }
+
+      .intro.fade {
+        transition: opacity 450ms cubic-bezier(0.2, 0.85, 0.2, 1);
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Intro overlay (Street Fighter style) -->
+    <div id="intro" class="intro" aria-hidden="true">
+      <div class="intro-panel"></div>
+      <div class="intro-vignette"></div>
+    </div>
+
+    <header id="header">
+      <nav class="nav">
+        <a class="link" href="#kontakt" data-scroll>Kontakt</a>
+
+        <a class="brand" href="#top" data-scroll aria-label="TCS ng">
+          <img class="nav-logo" src="./TCS-logo-BW.jpg" alt="TCS logo" />
+          <strong>TCS ng</strong>
+          <span>MTB skupnost</span>
+        </a>
+
+        <a class="link" href="#o-nas" data-scroll>O nas</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Vstop">
+        <div class="hero-inner" id="heroInner">
+          <!-- LOGO PLACEHOLDER (sem vstaviš svoj logo) -->
+          <img
+            class="hero-logo"
+            src="./TCS_logo_transparent.png"
+            alt="TCS logo"
+          />
+
+          <!--  <h1 class="title">TCS ng</h1> -->
+          <p class="lead">
+            Skupnost gorskih kolesarjev, ki ohranja, gradi in razvija poti v
+            sodelovanju z naravo in lokalnim okoljem.
+          </p>
+
+          <div class="rule"></div>
+
+          <div class="cta-list" aria-label="Glavne povezave">
+            <a href="./tedenske-novice.html">Tedenske novice</a>
+            <a href="#" onclick="return false;">Dogodki</a>
+            <a href="#" onclick="return false;">Včlani se</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="o-nas">
+        <div class="section-inner" id="aboutInner">
+          <h2>O nas</h2>
+          <p>
+            Zgodba TCS ng se je začela pred več kot dvajsetimi leti, formalno pa
+            smo se kot društvo povezali leta 2019. Naše poslanstvo je
+            ohranjanje, gradnja in razvoj kakovostnih gorskokolesarskih poti v
+            sodelovanju z naravo in lokalnim okoljem.
+            <br /><br />
+            Delujemo na območjih Skalnice, Sabotina, Škabrijela, Marka in širše,
+            kjer čistimo opuščene poti ter gradimo enoslednice, ki zaradi
+            naravnih danosti, razgledov in premišljene zasnove sodijo med
+            najboljše v Sloveniji. Skupno je urejenih približno 40 kilometrov
+            gorskokolesarskih poti, med njimi tudi legalna pot Škabrjelka na
+            Škabrijelu.
+            <br /><br />
+            Gorsko kolesarjenje razumemo kot dejavnost, ki krepi telo, spodbuja
+            družabnost in povezuje z naravo. Prepričani smo, da ustrezno
+            načrtovane in vzdrževane poti omogočajo varno uporabo z minimalnimi
+            vplivi na okolje ter prispevajo k razvoju rekreacije in turizma v
+            širšem prostoru. Ključno je sodelovanje s sorodno usmerjenimi
+            organizacijami ter pristojnimi inštitucijami.
+          </p>
+        </div>
+      </section>
+
+      <section id="kontakt">
+        <div class="section-inner" id="contactInner">
+          <h2>Kontakt</h2>
+          <p>Za vprašanja, sodelovanja ali predloge:</p>
+
+          <div class="contact-lines">
+            <a class="link" href="mailto:info@tcs.bike">info@tcs.bike</a>
+            <a class="link" href="tel:+38641705349">+386 41 705 349</a>
+            <a class="link" href="#" onclick="return false;"
+              >Instagram: @tcsng</a
+            >
+          </div>
+
+          <!-- Podpri nas (collapsible, clean, ne razbije strani) -->
+          <details class="support">
+            <summary>
+              <span class="support-summary">
+                Podpri nas <span class="chev">▾</span>
+              </span>
+            </summary>
+
+            <div class="support-content">
+              <div class="support-text">
+                Če želiš podpreti urejanje in vzdrževanje poti, lahko doniraš
+                preko QR kode ali povezave spodaj.
+              </div>
+
+              <!-- QR slika -->
+              <div class="qr-wrap" aria-label="QR koda">
+                <img src="./PodpriNasQR.jpg" alt="QR koda za donacijo" />
+              </div>
+
+              <!-- Link za nakazilo -->
+              <a class="donate-link" href="#" onclick="return false;">
+                Povezava za donacijo
+              </a>
+
+              <!-- Če želiš IBAN/podatke: lahko dodaš še 1 vrstico teksta -->
+              <!-- <div class="support-text">IBAN: SI56 ... • Namen: Podpora TCS ng</div> -->
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> TCS ng • MTB skupnost</footer>
+
+    <script>
+      // Header: transparent at top, blurred/darker on scroll
+      const header = document.getElementById("header");
+      function updateHeader() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        header.classList.toggle("scrolled", y > 8);
+      }
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      // Smooth scroll with offset for sticky header
+      document.querySelectorAll("[data-scroll]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          const el = document.querySelector(href);
+          if (!el) return;
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Reveal animations (hero + sections)
+      const reveal = (el) => el && el.classList.add("visible");
+      const targets = [
+        document.getElementById("heroInner"),
+        document.getElementById("aboutInner"),
+        document.getElementById("contactInner"),
+      ].filter(Boolean);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+      targets.forEach((t) => io.observe(t));
+
+      // Street Fighter intro overlay (4s), potem odstrani
+      (function runIntro() {
+        const intro = document.getElementById("intro");
+        if (!intro) return;
+
+        // če user preferira reduced motion, intro preskoči
+        const reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) {
+          intro.remove();
+          return;
+        }
+
+        // start
+        requestAnimationFrame(() => intro.classList.add("play"));
+
+        // po 4s fade-out + remove
+        setTimeout(() => {
+          intro.classList.add("fade");
+          setTimeout(() => intro.remove(), 520);
+        }, 4000);
+      })();
+    </script>
+  </body>
+</html>
