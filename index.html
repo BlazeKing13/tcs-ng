@@ -688,13 +688,13 @@
         if (!intro) return;
 
         // če user preferira reduced motion, intro preskoči
-        const reduceMotion =
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduceMotion) {
-          intro.remove();
-          return;
-        }
+        // const reduceMotion =
+        //   window.matchMedia &&
+        //   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // if (reduceMotion) {
+        //   intro.remove();
+        //   return;
+        // }
 
         // start
         const isMobile = window.matchMedia("(max-width: 560px)").matches;
