@@ -46,7 +46,7 @@ body {
       rgba(0, 0, 0, 0.55) 58%,
       rgba(0, 0, 0, 0.78) 100%
     ),
-    url("/images/TCS.jpg");
+    url("./images/TCS.jpg");
   background-size: cover;
   background-position: center;
   transform: scale(1.03);
@@ -595,7 +595,7 @@ footer {
       rgba(0, 0, 0, 0.55) 65%,
       rgba(0, 0, 0, 0.78) 100%
     ),
-    url("/images/TCS-Sloenduro-2025.jpg");
+    url("./images/TCS-Sloenduro-2025.jpg");
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   background-size: cover;
