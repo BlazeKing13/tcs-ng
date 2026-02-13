@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCS ng — Info tabla</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Intro overlay (Street Fighter style) -->
+    <div id="intro" class="intro" aria-hidden="true">
+      <div class="intro-panel"></div>
+      <div class="intro-vignette"></div>
+    </div>
+
+    <header id="header">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="link" href="#kontakt">Kontakt</a>
+        </div>
+
+        <a class="brand" href="#top">
+          <img class="nav-logo" src="/images/TCS-logo-BW.jpg" alt="TCS logo" />
+          <strong>TCS ng</strong>
+          <span>MTB skupnost</span>
+        </a>
+
+        <div class="nav-right">
+          <a class="link" href="#o-nas">O nas</a>
+          <a class="link" id="openMap">Kje smo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Vstop">
+        <div class="hero-inner" id="heroInner">
+          <img
+            class="hero-logo"
+            src="/images/TCS_logo_transparent.png"
+            alt="TCS logo"
+          />
+
+          <!--  <h1 class="title">TCS ng</h1> -->
+          <p class="lead">
+            Skupnost, ki ohranja, gradi in razvija poti v sodelovanju z naravo
+            in lokalnim okoljem.
+          </p>
+
+          <div class="rule"></div>
+
+          <div class="cta-list" aria-label="Glavne povezave">
+            <a href="./tedenske-novice.html">Novice</a>
+            <a href="./dogodki.html">Dogodki</a>
+            <a href="#" onclick="return false;">Včlani se</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="o-nas">
+        <div class="section-inner" id="aboutInner">
+          <h2>O nas</h2>
+          <p>
+            Zgodba TCS ng se je začela pred več kot dvajsetimi leti, formalno pa
+            smo se kot društvo povezali leta 2019. Naše poslanstvo je
+            ohranjanje, gradnja in razvoj kakovostnih poti v sodelovanju z
+            naravo in lokalnim okoljem.
+            <br /><br />
+            Delujemo na območju Goriške in širše, kjer čistimo in urejamo
+            obstoječe poti, ki zaradi naravnih danosti, razgledov in premišljene
+            zasnove sodijo med najlepše v Sloveniji. Skupno je urejenih
+            približno 40 kilometrov poti, za tek, pohodništvo in gorsko
+            kolesarjenje.
+            <br /><br />
+            Gorsko kolesarjenje razumemo kot dejavnost, ki krepi telo, spodbuja
+            družabnost in povezuje z naravo. Prepričani smo, da ustrezno
+            načrtovane in vzdrževane poti omogočajo varno uporabo z minimalnimi
+            vplivi na okolje ter prispevajo k razvoju rekreacije in turizma v
+            širšem prostoru. Ključno je sodelovanje s sorodno usmerjenimi
+            organizacijami ter pristojnimi inštitucijami.
+          </p>
+        </div>
+      </section>
+
+      <section id="kontakt">
+        <div class="section-inner" id="contactInner">
+          <h2>Kontakt</h2>
+          <p>Za vprašanja, sodelovanja ali predloge:</p>
+
+          <div class="contact-lines">
+            <a class="link" href="mailto:info@tcs.bike">info@tcs.bike</a>
+            <a class="link" href="tel:+38641705349">+386 41 705 349</a>
+            <a class="link" href="#" onclick="return false;"
+              >Instagram: @tcsng</a
+            >
+          </div>
+
+          <!-- Podpri nas -->
+          <details class="support">
+            <summary>
+              <span class="support-summary">
+                Podpri nas <span class="chev">▾</span>
+              </span>
+            </summary>
+
+            <div class="support-content">
+              <div class="support-text">
+                Če želiš podpreti urejanje in vzdrževanje poti, lahko doniraš
+                preko QR kode ali povezave spodaj.
+              </div>
+
+              <!-- QR slika -->
+              <div class="qr-wrap" aria-label="QR koda">
+                <img src="/images/PodpriNasQR.jpg" alt="QR koda za donacijo" />
+              </div>
+
+              <!-- Link za nakazilo -->
+              <a class="donate-link" href="#" onclick="return false;">
+                Povezava za donacijo
+              </a>
+
+              <!-- IBAN/podatki: -->
+              <!-- <div class="support-text">IBAN: SI56 ... • Namen: Podpora TCS ng</div> -->
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> TCS ng • MTB skupnost</footer>
+    <div
+      class="modal"
+      id="mapModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal-backdrop" data-close-map></div>
+
+      <div class="modal-card" role="document" aria-label="Lokacija kluba">
+        <div class="modal-head">
+          <div>
+            <div class="modal-title">Kje smo</div>
+            <div class="modal-sub">Soška cesta 50, Solkan</div>
+          </div>
+
+          <button
+            class="modal-x"
+            type="button"
+            aria-label="Zapri"
+            data-close-map
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="map-anim">
+            <iframe
+              id="mapFrame"
+              title="Zemljevid — Soška cesta 50, Solkan"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="modal-actions">
+            <a
+              class="link"
+              id="openMaps"
+              href="https://maps.app.goo.gl/aoZUWQ21vJys5AwV6"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Odpri v Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Header: transparent at top, blurred/darker on scroll
+      const header = document.getElementById("header");
+      function updateHeader() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        header.classList.toggle("scrolled", y > 8);
+      }
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      // Smooth scroll with offset for sticky header
+      document.querySelectorAll("[data-scroll]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          const el = document.querySelector(href);
+          if (!el) return;
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Reveal animations (hero + sections)
+      const reveal = (el) => el && el.classList.add("visible");
+      const targets = [
+        document.getElementById("heroInner"),
+        document.getElementById("aboutInner"),
+        document.getElementById("contactInner"),
+      ].filter(Boolean);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+      targets.forEach((t) => io.observe(t));
+
+      // Street Fighter intro overlay (4s), potem odstrani
+      (function runIntro() {
+        const intro = document.getElementById("intro");
+        if (!intro) return;
+
+        // če user preferira reduced motion, intro preskoči
+        // const reduceMotion =
+        //   window.matchMedia &&
+        //   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // if (reduceMotion) {
+        //   intro.remove();
+        //   return;
+        // }
+
+        // start
+        const isMobile = window.matchMedia("(max-width: 560px)").matches;
+        const duration = isMobile ? 3000 : 4000;
+
+        intro.style.setProperty("--introDur", isMobile ? "3s" : "4s");
+
+        requestAnimationFrame(() => intro.classList.add("play"));
+
+        setTimeout(() => {
+          intro.classList.add("fade");
+          setTimeout(() => intro.remove(), 520);
+        }, duration);
+      })();
+
+      // ===== Modal: Kje smo =====
+      const mapModal = document.getElementById("mapModal");
+      const mapFrame = document.getElementById("mapFrame");
+
+      // Uporabimo naslov (embed brez API key)
+      const MAPS_QUERY = encodeURIComponent("Soška cesta 50, Solkan");
+      // z= zoom
+      const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&t=k&z=17&output=embed`;
+
+      function openMap() {
+        if (!mapFrame.src) mapFrame.src = MAPS_EMBED; // lazy-load
+        mapModal.classList.add("show");
+        mapModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMap() {
+        mapModal.classList.remove("show");
+        mapModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-open-map]").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openMap();
+        });
+      });
+
+      mapModal.querySelectorAll("[data-close-map]").forEach((el) => {
+        el.addEventListener("click", closeMap);
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mapModal.classList.contains("show"))
+          closeMap();
+      });
+    </script>
+  </body>
+</html>

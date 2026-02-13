@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2026-03-10-delovna-akcija-skalnica",
+    "date": "2026-03-10",
+    "actual": true,
+    "past": false,
+    "title": "Freeriders",
+    "flyer": "./event-1.jpg",
+    "alt": "Flyer: Freeriders in the mountains",
+    "short": "Zbor ob 8:00. 8:30 start od TCS štaba do spusta",
+    "long": "Zbor: 8:00, parkirišče pri TCS štabu.\n\nPrinesi: vodo in kakšno energijsko tablico.\n\nPo akciji druženje, ter pijača in jedača. Če se druženja ne boš udeležil, sporoči prej."
+  },
+  {
+    "id": "2026-04-05-skabrjelka-dan-proge",
+    "date": "2026-04-05",
+    "actual": false,
+    "past": false,
+    "title": "Škabrjelka — Dan proge",
+    "flyer": "./event-2.jpg",
+    "alt": "Flyer: Škabrjelka — Dan proge",
+    "short": "Skupinski ogledi linije, varnostni briefing in druženje. Primerno za vse.",
+    "long": "Program:\n\n10:00 — zbor + briefing\n11:00 — vodene vožnje (skupine po nivoju)\n13:00 — druženje in Q&A\n\nVarnost: čelada obvezna, priporočamo ščitnike."
+  },
+  {
+    "id": "2026-05-01-piknik-skupnosti",
+    "date": "2026-05-01",
+    "actual": false,
+    "past": false,
+    "title": "Piknik skupnosti TCS ng",
+    "flyer": "./event-3.jpg",
+    "alt": "Flyer: Piknik skupnosti TCS ng",
+    "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
+    "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
+  },
+  {
+    "id": "2026-01-01-novo-leto",
+    "date": "2026-01-01",
+    "actual": false,
+    "past": true,
+    "title": "Novoletno druženje društva TCS ng",
+    "flyer": "./event-3.jpg",
+    "alt": "Flyer: Druženje novo leto TCS ng",
+    "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
+    "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
+  }
+]

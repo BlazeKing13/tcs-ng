@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCS ng — Dogodki</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/events.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header id="header">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="link" href="#kontakt" data-scroll>Kontakt</a>
+        </div>
+
+        <a class="brand" href="./index.html" aria-label="TCS ng">
+          <img class="nav-logo" src="/images/TCS-logo-BW.jpg" alt="TCS logo" />
+          <strong>TCS ng</strong>
+          <span>MTB skupnost</span>
+        </a>
+
+        <div class="nav-right">
+          <a class="link" href="#o-nas" data-scroll>O nas</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="page-hero" aria-label="Dogodki">
+        <div class="hero-inner" id="heroInner">
+          <h1 class="title">Dogodki</h1>
+
+          <p class="lead">Pregled prihajajočih in preteklih dogodkov</p>
+
+          <div class="rule"></div>
+
+          <div class="backlink">
+            <a href="./index.html">← Nazaj na prvo stran</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="events" aria-label="Seznam dogodkov">
+        <div id="events"></div>
+      </section>
+      <section class="events" aria-label="Pretekli dogodki">
+        <details class="past">
+          <summary>
+            <span class="past-summary">
+              Pretekli dogodki <span class="chev">▾</span>
+            </span>
+          </summary>
+          <div
+            id="pastEvents"
+            style="
+              width: 100%;
+              display: grid;
+              gap: 18px;
+              justify-items: center;
+              margin-top: 14px;
+            "
+          ></div>
+        </details>
+      </section>
+
+      <!-- Spodaj: isto kot prva stran -->
+      <section class="bottom" id="o-nas">
+        <div class="section-inner" id="aboutInner">
+          <h2>O nas</h2>
+          <p
+            style="
+              color: var(--muted);
+              line-height: 1.85;
+              font-size: 15px;
+              max-width: 86ch;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Zgodba TCS ng se je začela pred več kot dvajsetimi leti, formalno pa
+            smo se kot društvo povezali leta 2019. Naše poslanstvo je
+            ohranjanje, gradnja in razvoj kakovostnih gorskokolesarskih poti v
+            sodelovanju z naravo in lokalnim okoljem.
+            <br /><br />
+            Delujemo na območjih Skalnice, Sabotina, Škabrijela, Marka in širše,
+            kjer čistimo opuščene poti ter gradimo enoslednice, ki zaradi
+            naravnih danosti, razgledov in premišljene zasnove sodijo med
+            najboljše v Sloveniji.
+          </p>
+        </div>
+      </section>
+
+      <section class="bottom" id="kontakt">
+        <div class="section-inner" id="contactInner">
+          <h2>Kontakt</h2>
+          <p style="color: var(--muted); line-height: 1.85; font-size: 15px">
+            Za vprašanja, sodelovanja ali predloge:
+          </p>
+
+          <div class="contact-lines">
+            <a class="link" href="mailto:info@tcs.bike">info@tcs.bike</a>
+            <a class="link" href="tel:+38641705349">+386 41 705 349</a>
+            <a class="link" href="#" onclick="return false;"
+              >Instagram: @tcsng</a
+            >
+          </div>
+
+          <details class="support">
+            <summary>
+              <span class="support-summary">
+                Podpri nas <span class="chev">▾</span>
+              </span>
+            </summary>
+
+            <div class="support-content">
+              <div class="support-text">
+                Če želiš podpreti urejanje in vzdrževanje poti, lahko doniraš
+                preko QR kode ali povezave spodaj.
+              </div>
+
+              <div class="qr-wrap" aria-label="QR koda">
+                <img src="/images/PodpriNasQR.jpg" alt="QR koda za donacijo" />
+              </div>
+
+              <a class="donate-link" href="#" onclick="return false;">
+                Povezava za donacijo
+              </a>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> TCS ng • MTB skupnost</footer>
+
+    <script>
+      // header bg on scroll
+      const header = document.getElementById("header");
+      function updateHeader() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        header.classList.toggle("scrolled", y > 8);
+      }
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      // smooth scroll
+      document.querySelectorAll("[data-scroll]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          const el = document.querySelector(href);
+          if (!el) return;
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // ===== EVENTS: JSON + render + pin =====
+      const eventsContainer = document.getElementById("events");
+
+      function escapeHTML(str) {
+        return String(str ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function longToHTML(longText) {
+        const safe = escapeHTML(longText ?? "");
+        const parts = safe.split(/\n\s*\n/g).filter(Boolean);
+        if (!parts.length) return `<p> </p>`;
+        return parts.map((p) => `<p>${p}</p>`).join("");
+      }
+
+      function formatDateSI(dateString) {
+        const raw = String(dateString ?? "").trim();
+        if (!raw) return "";
+        const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (iso)
+          return `${Number(iso[3])}. ${Number(iso[2])}. ${Number(iso[1])}`;
+        const si = raw.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+        if (si) return `${Number(si[1])}. ${Number(si[2])}. ${Number(si[3])}`;
+        return raw;
+      }
+
+      function toTime(obj) {
+        const raw = String(obj?.date ?? "").trim();
+        if (!raw) return 0;
+        const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (iso)
+          return new Date(
+            Number(iso[1]),
+            Number(iso[2]) - 1,
+            Number(iso[3])
+          ).getTime();
+        const si = raw.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+        if (si)
+          return new Date(
+            Number(si[3]),
+            Number(si[2]) - 1,
+            Number(si[1])
+          ).getTime();
+        return 0;
+      }
+
+      function isPastByDate(obj) {
+        const t = toTime(obj);
+        if (!t) return false;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return t < today.getTime();
+      }
+
+      function renderEvents(list, container) {
+        container.innerHTML = "";
+        if (!list.length) {
+          container.innerHTML = `
+      <div style="text-align:center; color: var(--muted); padding: 18px 0;">
+        Trenutno ni objav.
+      </div>
+    `;
+          return;
+        }
+
+        list.forEach((ev, index) => {
+          const article = document.createElement("article");
+          const actual = !!ev.actual;
+          article.className = actual ? "event actual" : "event";
+
+          const title = escapeHTML(ev.title);
+          const date = formatDateSI(ev.date);
+          const flyer = escapeHTML(ev.flyer || ev.image || "./TCS.jpg");
+          const alt = escapeHTML(ev.alt || ev.title || "Dogodek");
+          const short = escapeHTML(ev.short || "");
+
+          article.innerHTML = `
+      <div class="event-flyer">
+        <img src="${flyer}" alt="${alt}" loading="lazy" />
+      </div>
+
+      <div class="event-title-row">
+        <h3 class="event-title">${title}</h3>
+        <div class="event-date">${escapeHTML(date)}</div>
+      </div>
+
+      ${actual ? `<div class="badge-actual">AKTUALNO</div>` : ""}
+
+      ${short ? `<p class="event-short">${short}</p>` : ""}
+
+      <details>
+        <summary>
+          <span class="readmore">
+            Preberi več <span class="chev">▾</span>
+          </span>
+        </summary>
+        <div class="more">
+          ${longToHTML(ev.long)}
+        </div>
+      </details>
+    `;
+
+          container.appendChild(article);
+          setTimeout(() => article.classList.add("visible"), index * 90);
+        });
+      }
+
+      let cachedEvents = [];
+
+      async function loadEvents() {
+        const eventsContainer = document.getElementById("events");
+        const pastEventsContainer = document.getElementById("pastEvents");
+
+        try {
+          const res = await fetch("./events.json", { cache: "no-store" });
+          if (!res.ok) throw new Error("Ne morem prebrati events.json");
+
+          const data = await res.json();
+          cachedEvents = Array.isArray(data) ? data : [];
+
+          // 1) UPCOMING (past:false) + pin ACTUAL
+          const upcomingPinned = cachedEvents.filter(
+            (e) => !e.past && !!e.actual
+          );
+          const upcomingNormal = cachedEvents.filter(
+            (e) => !e.past && !e.actual
+          );
+
+          // 2) PAST (past:true) — ločeno
+          const pastTagged = cachedEvents.filter((e) => !!e.past);
+
+          // Sorting:
+          // upcoming: najbližji datum prvi (ASC)
+          upcomingPinned.sort((a, b) => toTime(a) - toTime(b));
+          upcomingNormal.sort((a, b) => toTime(a) - toTime(b));
+
+          // past: najnovejši pretekli prvi (DESC)
+          pastTagged.sort((a, b) => toTime(b) - toTime(a));
+
+          renderEvents([...upcomingPinned, ...upcomingNormal], eventsContainer);
+          renderEvents(pastTagged, pastEventsContainer);
+        } catch (err) {
+          eventsContainer.innerHTML = `
+      <div style="text-align:center; color: var(--muted); padding: 18px 0;">
+        Ni mogoče naložiti dogodkov. Preveri, če je <strong>events.json</strong> v isti mapi kot HTML
+        in da stran odpiraš prek <strong>http</strong> (GitHub Pages).
+      </div>
+    `;
+          console.error(err);
+        }
+      }
+
+      loadEvents();
+
+      loadEvents();
+
+      // reveal hero + bottom
+      const reveal = (el) => el && el.classList.add("visible");
+      const targets = [
+        document.getElementById("heroInner"),
+        document.getElementById("aboutInner"),
+        document.getElementById("contactInner"),
+      ].filter(Boolean);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      targets.forEach((t) => io.observe(t));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCS ng — Tedenske novice</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/news.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style></style>
+  </head>
+
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header id="header">
+      <nav class="nav">
+        <a class="link" href="#kontakt" data-scroll>Kontakt</a>
+
+        <a class="brand" href="./index.html" aria-label="TCS ng">
+          <img class="nav-logo" src="/images/TCS-logo-BW.jpg" alt="TCS logo" />
+          <strong>TCS ng</strong>
+          <span>MTB skupnost</span>
+        </a>
+
+        <a class="link" href="#o-nas" data-scroll>O nas</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="page-hero" aria-label="Tedenske novice">
+        <div class="hero-inner" id="heroInner">
+          <h1 class="title">Tedenske novice</h1>
+
+          <div class="sortbar">
+            <label for="sort" class="sortlabel">Razvrsti:</label>
+            <select id="sort" class="sortselect">
+              <option value="newest" selected>Najnovejše</option>
+              <option value="oldest">Najstarejše</option>
+            </select>
+          </div>
+
+          <p class="lead">
+            Kratek pregled dogajanja, delovnih akcij in stanja poti. Klikni
+            “Preberi več” za podrobnosti.
+          </p>
+
+          <div class="rule"></div>
+
+          <div class="backlink">
+            <a href="./index.html">← Nazaj na prvo stran</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="posts" aria-label="Seznam novic">
+        <div id="posts"></div>
+      </section>
+
+      <section class="bottom" id="o-nas">
+        <div class="section-inner" id="aboutInner">
+          <h2>O nas</h2>
+          <p>
+            Zgodba TCS ng se je začela pred več kot dvajsetimi leti, formalno pa
+            smo se kot društvo povezali leta 2019. Naše poslanstvo je
+            ohranjanje, gradnja in razvoj kakovostnih gorskokolesarskih poti v
+            sodelovanju z naravo in lokalnim okoljem.
+            <br /><br />
+            Delujemo na območjih Skalnice, Sabotina, Škabrijela, Marka in širše,
+            kjer čistimo opuščene poti ter gradimo enoslednice, ki zaradi
+            naravnih danosti, razgledov in premišljene zasnove sodijo med
+            najboljše v Sloveniji. Skupno je urejenih približno 40 kilometrov
+            gorskokolesarskih poti, med njimi tudi legalna pot Škabrjelka na
+            Škabrijelu.
+          </p>
+        </div>
+      </section>
+
+      <section class="bottom" id="kontakt">
+        <div class="section-inner" id="contactInner">
+          <h2>Kontakt</h2>
+          <p>Za vprašanja, sodelovanja ali predloge:</p>
+
+          <div class="contact-lines">
+            <a class="link" href="mailto:info@tcs.bike">info@tcs.bike</a>
+            <a class="link" href="tel:+38641705349">+386 41 705 349</a>
+            <a class="link" href="#" onclick="return false;"
+              >Instagram: @tcsng</a
+            >
+          </div>
+
+          <details class="support">
+            <summary>
+              <span class="support-summary">
+                Podpri nas <span class="chev">▾</span>
+              </span>
+            </summary>
+
+            <div class="support-content">
+              <div class="support-text">
+                Če želiš podpreti urejanje in vzdrževanje poti, lahko doniraš
+                preko QR kode ali povezave spodaj.
+              </div>
+
+              <div class="qr-wrap" aria-label="QR koda">
+                <img src="/images/PodpriNasQR.jpg" alt="QR koda za donacijo" />
+              </div>
+
+              <a class="donate-link" href="#" onclick="return false;">
+                Povezava za donacijo
+              </a>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> TCS ng • MTB skupnost</footer>
+
+    <script>
+      // Header: transparent at top, blurred/darker on scroll
+      const header = document.getElementById("header");
+      function updateHeader() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        header.classList.toggle("scrolled", y > 8);
+      }
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      // Smooth scroll with offset for sticky header
+      document.querySelectorAll("[data-scroll]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          const el = document.querySelector(href);
+          if (!el) return;
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      /* ===============================
+         POSTS: JSON + render + sort + pin
+      ================================== */
+
+      const postsContainer = document.getElementById("posts");
+      const sortSelect = document.getElementById("sort");
+
+      function formatDateSI(dateString) {
+        const raw = String(dateString ?? "").trim();
+        if (!raw) return "";
+
+        // ISO
+        const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (iso) {
+          const y = Number(iso[1]);
+          const m = Number(iso[2]);
+          const d = Number(iso[3]);
+          return `${d}. ${m}. ${y}`;
+        }
+
+        // Slovenski
+        const si = raw.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+        if (si) {
+          return `${Number(si[1])}. ${Number(si[2])}. ${Number(si[3])}`;
+        }
+
+        // fallback
+        return raw;
+      }
+
+      function escapeHTML(str) {
+        return String(str ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function longToHTML(longText) {
+        const safe = escapeHTML(longText ?? "");
+        const parts = safe.split(/\n\s*\n/g).filter(Boolean);
+        if (!parts.length) return `<p> </p>`;
+        return parts.map((p) => `<p>${p}</p>`).join("");
+      }
+
+      function toTime(p) {
+        const raw = String(p?.date ?? "").trim();
+        if (!raw) return 0;
+
+        // ISO format: YYYY-MM-DD
+        const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (iso) {
+          const y = Number(iso[1]);
+          const m = Number(iso[2]);
+          const d = Number(iso[3]);
+          return new Date(y, m - 1, d).getTime();
+        }
+
+        // Slovenski format: D. M. YYYY ali D.M.YYYY
+        const si = raw.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+        if (si) {
+          const d = Number(si[1]);
+          const m = Number(si[2]);
+          const y = Number(si[3]);
+          return new Date(y, m - 1, d).getTime();
+        }
+
+        return 0;
+      }
+
+      function sortWithPin(list, mode) {
+        const dir = mode === "oldest" ? 1 : -1;
+
+        const pinned = list.filter((p) => !!p.important);
+        const normal = list.filter((p) => !p.important);
+
+        pinned.sort((a, b) => (toTime(a) - toTime(b)) * dir);
+        normal.sort((a, b) => (toTime(a) - toTime(b)) * dir);
+
+        return [...pinned, ...normal];
+      }
+
+      function renderPosts(list) {
+        postsContainer.innerHTML = "";
+
+        if (!list.length) {
+          postsContainer.innerHTML = `
+            <div style="text-align:center; color: var(--muted); padding: 18px 0;">
+              Trenutno ni objav.
+            </div>
+          `;
+          return;
+        }
+
+        list.forEach((post, index) => {
+          const article = document.createElement("article");
+
+          const important = !!post.important;
+          article.className = important ? "post important" : "post";
+
+          const title = escapeHTML(post.title);
+          const date = formatDateSI(post.date);
+          const short = escapeHTML(post.short);
+          const img = escapeHTML(post.image || post.img || "./TCS.jpg");
+          const alt = escapeHTML(post.alt || post.title || "Novica");
+
+          article.innerHTML = `
+            <div class="post-grid">
+              <div class="post-img">
+                <img src="${img}" alt="${alt}" loading="lazy" />
+              </div>
+
+              <div>
+                <div class="post-title-row">
+                  <h3 class="post-title">${title}</h3>
+                  <div class="post-date">${escapeHTML(date)}</div>
+                </div>
+
+                ${important ? `<div class="badge">POMEMBNO</div>` : ""}
+
+                <p class="post-short">${short}</p>
+
+                <details>
+                  <summary>
+                    <span class="readmore">
+                      Preberi več <span class="chev">▾</span>
+                    </span>
+                  </summary>
+                  <div class="more">
+                    ${longToHTML(post.long)}
+                  </div>
+                </details>
+              </div>
+            </div>
+          `;
+
+          postsContainer.appendChild(article);
+
+          // smooth reveal
+          setTimeout(() => article.classList.add("visible"), index * 90);
+        });
+      }
+
+      let cachedPosts = [];
+
+      async function loadPosts() {
+        try {
+          const res = await fetch("./posts.json", { cache: "no-store" });
+          if (!res.ok) throw new Error("Ne morem prebrati posts.json");
+
+          const data = await res.json();
+          cachedPosts = Array.isArray(data) ? data : [];
+
+          const sorted = sortWithPin(
+            [...cachedPosts],
+            sortSelect?.value || "newest"
+          );
+
+          renderPosts(sorted);
+        } catch (err) {
+          postsContainer.innerHTML = `
+            <div style="text-align:center; color: var(--muted); padding: 18px 0;">
+              Ni mogoče naložiti novic. Preveri, če je <strong>posts.json</strong> v isti mapi kot HTML
+              in da stran odpiraš prek <strong>http</strong> (Live Server), ne prek <strong>file://</strong>.
+            </div>
+          `;
+          console.error(err);
+        }
+      }
+
+      sortSelect?.addEventListener("change", () => {
+        const sorted = sortWithPin([...cachedPosts], sortSelect.value);
+        renderPosts(sorted);
+      });
+
+      loadPosts();
+
+      /* ===============================
+         Reveal animations (hero + bottom)
+      ================================== */
+      const reveal = (el) => el && el.classList.add("visible");
+      const targets = [
+        document.getElementById("heroInner"),
+        document.getElementById("aboutInner"),
+        document.getElementById("contactInner"),
+      ].filter(Boolean);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      targets.forEach((t) => io.observe(t));
+    </script>
+  </body>
+</html>
