@@ -256,7 +256,7 @@
           const title = escapeHTML(post.title);
           const date = formatDateSI(post.date);
           const short = escapeHTML(post.short);
-          const img = escapeHTML(post.image || post.img || "./TCS.jpg");
+          const img = escapeHTML(post.image || post.img || "../images/TCS.jpg");
           const alt = escapeHTML(post.alt || post.title || "Novica");
 
           article.innerHTML = `
