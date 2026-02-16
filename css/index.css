@@ -385,6 +385,53 @@ main {
   background: var(--hairline);
   margin: 18px 0 6px;
 }
+/* TCS Gravity CTA */
+.cta-gravity {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+
+  /* osnovni gradient tekst */
+  background: linear-gradient(90deg, #a781ba 0%, #000000 55%, #a781ba 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* “shine” layer */
+.cta-gravity::before {
+  content: "";
+  position: absolute;
+  inset: -6px -18px;  
+  pointer-events: none;
+
+  /* ozka svetla črta */
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(255, 255, 255, 0.80) 50%,
+    transparent 58%,
+    transparent 100%
+  );
+
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+/* hover: enkratni “shine” */
+.cta-gravity:hover::before {
+  opacity: 1;
+  transform: translateX(120%);
+  transition: transform 650ms var(--ease), opacity 220ms var(--ease);
+}
+
+/* optional */
+.cta-gravity:hover {
+  filter: drop-shadow(0 6px 18px rgba(167, 157, 145, 0.22));
+}
+
 
 /* Main CTAs: centered text list */
 .cta-list {
