@@ -385,53 +385,6 @@ main {
   background: var(--hairline);
   margin: 18px 0 6px;
 }
-/* TCS Gravity CTA */
-.cta-gravity {
-  position: relative;
-  display: inline-block;
-  font-weight: 800;
-  letter-spacing: 0.25px;
-
-  /* osnovni gradient tekst */
-  background: linear-gradient(90deg, #a781ba 0%, #000000 55%, #a781ba 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* “shine” layer */
-.cta-gravity::before {
-  content: "";
-  position: absolute;
-  inset: -6px -18px;  
-  pointer-events: none;
-
-  /* ozka svetla črta */
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    transparent 42%,
-    rgba(255, 255, 255, 0.80) 50%,
-    transparent 58%,
-    transparent 100%
-  );
-
-  transform: translateX(-120%);
-  opacity: 0;
-}
-
-/* hover: enkratni “shine” */
-.cta-gravity:hover::before {
-  opacity: 1;
-  transform: translateX(120%);
-  transition: transform 650ms var(--ease), opacity 220ms var(--ease);
-}
-
-/* optional */
-.cta-gravity:hover {
-  filter: drop-shadow(0 6px 18px rgba(167, 157, 145, 0.22));
-}
-
 
 /* Main CTAs: centered text list */
 .cta-list {
@@ -445,7 +398,56 @@ main {
   font-size: 18px;
   width: fit-content;
 }
+/* TCS Gravity CTA - Metallic Effect */
+.cta-list a.cta-gravity {
+  font-weight: 800;
+  letter-spacing: 0.35px;
 
+  /* Override default link color but keep it as a link */
+  color: transparent !important;
+
+  /* Smooth metallic gradient - very gradual transitions between colors */
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    #000000 10%,
+    #9a3cc8 25%,
+    #a781ba 35%,
+    #ffffff 48%,
+    #8d2fbb 52%,
+    #a781ba 65%,
+    #8d2fbb 75%,
+    #000000 90%,
+    #000000 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Subtle depth shadow */
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.22);
+
+  /* Keep same transition as other links */
+  transition: color 180ms var(--ease), opacity 180ms var(--ease),
+    filter 180ms var(--ease);
+}
+
+/* Keep the underline animation - it's already defined globally via .cta-list a::after */
+/* Just adjust the hover state to work with the metallic effect */
+.cta-list a.cta-gravity:hover {
+  filter: brightness(1.4) contrast(1.25);
+  opacity: 1;
+}
+
+/* Keep the underline animation - it's already defined globally via .cta-list a::after */
+/* Just adjust the hover state to work with the metallic effect */
+.cta-list a.cta-gravity:hover {
+  filter: brightness(1.4) contrast(1.25);
+  opacity: 1;
+  text-shadow: 0 0 15px rgba(167, 129, 186, 0.7), 0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6);
+}
 /* Sections: centered, readable width */
 section {
   padding-top: 40px;
