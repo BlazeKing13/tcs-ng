@@ -66,9 +66,7 @@
           <div class="cta-list" aria-label="Glavne povezave">
             <a href="./tedenske-novice.html">Novice</a>
             <a href="./dogodki.html">Dogodki</a>
-            <a class="cta-gravity" href="#" onclick="return false;"
-              >TCS Gravity</a
-            >
+            <a class="cta-gravity" href="./tcs-gravity.html">TCS Gravity</a>
             <a href="#" onclick="return false;">Včlani se</a>
           </div>
         </div>
@@ -197,6 +195,26 @@
       </div>
     </div>
 
+    <!-- ===== TCS Gravity Flyby (pre-navigacijska animacija) ===== -->
+    <div
+      id="gravityFlyby"
+      class="gravity-flyby"
+      aria-hidden="true"
+      role="presentation"
+    >
+      <div class="gravity-flyby__backdrop"></div>
+
+      <img
+        class="gravity-flyby__rider"
+        src="./images/gravity-rider.png"
+        alt=""
+        loading="eager"
+        decoding="async"
+      />
+
+      <div class="gravity-flyby__streak" aria-hidden="true"></div>
+    </div>
+
     <script>
       // Header: transparent at top, blurred/darker on scroll
       const header = document.getElementById("header");
@@ -308,6 +326,47 @@
         if (e.key === "Escape" && mapModal.classList.contains("show"))
           closeMap();
       });
+
+      // ===== TCS Gravity: flyby animacija pred navigacijo =====
+      (function () {
+        const btn = document.querySelector(".cta-gravity");
+        const flyby = document.getElementById("gravityFlyby");
+        if (!btn || !flyby) return;
+
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const targetHref = btn.getAttribute("href") || "./tcs-gravity.html";
+
+        // Če slika ne obstaja, nadaljuj brez animacije
+        const riderImg = flyby.querySelector(".gravity-flyby__rider");
+        let riderOk = true;
+        if (riderImg) {
+          riderImg.addEventListener("error", () => (riderOk = false));
+        }
+
+        btn.addEventListener("click", (e) => {
+          // spoštuj nastavitve uporabnika
+          if (reduceMotion) return;
+          // če se slika ne naloži, ne kompliciraj
+          if (!riderOk) return;
+
+          e.preventDefault();
+
+          // restart animacije
+          flyby.classList.remove("play");
+          // prisili reflow
+          void flyby.offsetWidth;
+          flyby.classList.add("play");
+          flyby.setAttribute("aria-hidden", "false");
+
+          const DURATION_MS = 900; // mora biti enako CSS animaciji
+          window.setTimeout(() => {
+            window.location.href = targetHref;
+          }, DURATION_MS);
+        });
+      })();
     </script>
   </body>
 </html>
