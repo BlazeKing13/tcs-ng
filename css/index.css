@@ -880,7 +880,7 @@ footer {
   .gravity-flyby__rider {
     top: 46%;
     left: -58vw;               /* ključ: start še bolj levo */
-    width: 100vw;               /* ključ: rider manjši */
+    width: 115vw;               /* ključ: rider manjši */
     transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.90);
   }
 
