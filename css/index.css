@@ -893,33 +893,38 @@ footer {
   .gravity-flyby__streak {
     top: 46%;
     height: 120px;
-    width: 165vw;  
+    width: 165vw;
     left: -35vw;
     filter: blur(10px);
   }
 
+  /* KLJUČ: left = 0, start pozicija gre v translateX */
   .gravity-flyby__rider {
     top: 46%;
-    left: -58vw;               /* start */
-    width: 100vw;               
-    transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.90);
+    left: 0;
+    width: 100vw;
+    transform: translateY(-50%) translateX(-130vw) rotate(-6deg) scale(0.90);
   }
 
   @keyframes gravityRider {
     0% {
       opacity: 0;
-      transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.88);
+      transform: translateY(-50%) translateX(-130vw) rotate(-6deg) scale(0.88);
       filter: blur(2px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
     }
-    8% { opacity: 1; }
+    10% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-95vw) rotate(-5deg) scale(0.90);
+      filter: blur(1.5px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
     45% {
       opacity: 1;
-      transform: translateY(-50%) translateX(72vw) rotate(-2deg) scale(0.94);
+      transform: translateY(-50%) translateX(-8vw) rotate(-2deg) scale(0.94);
       filter: blur(0px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
     }
     100% {
       opacity: 0;
-      transform: translateY(-50%) translateX(130vw) rotate(2deg) scale(0.94);
+      transform: translateY(-50%) translateX(140vw) rotate(2deg) scale(0.94);
       filter: blur(3px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
     }
   }
