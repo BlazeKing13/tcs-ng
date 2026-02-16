@@ -496,7 +496,7 @@ main {
   position: absolute;
   top: 50%;
   left: -35vw;
-  width: min(1000px, 1000px);
+  width: min(1000px, 92vw);
   height: auto;
   transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.98);
   opacity: 0;
@@ -573,6 +573,7 @@ main {
     filter: blur(3px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
   }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .gravity-flyby,
@@ -826,3 +827,89 @@ footer {
   transition: opacity 450ms cubic-bezier(0.2, 0.85, 0.2, 1);
   opacity: 0;
 }
+/* ================================
+   Gravity flyby: responsive tuning
+   ================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .gravity-flyby__streak {
+    top: 48%;
+    height: 150px;
+    width: 150vw;
+    left: -25vw;
+  }
+
+  .gravity-flyby__rider {
+    top: 48%;
+    left: -45vw;                 /* start malo bolj levo */
+    width: min(820px, 90vw);     /* manjši */
+    transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.95);
+  }
+
+  @keyframes gravityRider {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.92);
+      filter: blur(2px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+    8% { opacity: 1; }
+    45% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(80vw) rotate(-2deg) scale(0.98);
+      filter: blur(0px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(145vw) rotate(2deg) scale(0.98);
+      filter: blur(3px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .gravity-flyby__streak {
+    top: 46%;
+    height: 120px;
+    width: 165vw;     /* širše, da “zapolni” */
+    left: -35vw;
+    filter: blur(10px);
+  }
+
+  .gravity-flyby__rider {
+    top: 46%;
+    left: -58vw;               /* ključ: start še bolj levo */
+    width: 86vw;               /* ključ: rider manjši */
+    transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.90);
+  }
+
+  @keyframes gravityRider {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(0) rotate(-6deg) scale(0.88);
+      filter: blur(2px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+    8% { opacity: 1; }
+    45% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(72vw) rotate(-2deg) scale(0.94);
+      filter: blur(0px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(130vw) rotate(2deg) scale(0.94);
+      filter: blur(3px) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
+    }
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .gravity-flyby__rider {
+    width: 90vw;
+    top: 45%;
+    left: -62vw;
+  }
+}
+
