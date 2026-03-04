@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Tedenske novice društva TCS ng: obvestila, napovedi, pomembne informacije in utrinki iz skupnosti."
+    />
+    <meta
+      name="keywords"
+      content="TCS ng, TCS društvo, MTB, mountain bike, Solkan, Nova Gorica, društvo, kolesarstvo, dogodki, skupnost, TCS Gravity, gorsko kolesarstvo"
+    />
+    <meta name="theme-color" content="#0b0b0b" />
+
+    <link rel="canonical" href="https://www.tcs.bike/tedenske-novice.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tedenske novice — TCS ng" />
+    <meta
+      property="og:description"
+      content="Tedenske novice društva TCS ng: obvestila, napovedi, pomembne informacije in utrinki iz skupnosti."
+    />
+    <meta
+      property="og:url"
+      content="https://www.tcs.bike/tedenske-novice.html"
+    />
+    <meta property="og:site_name" content="TCS ng" />
+    <meta
+      property="og:image"
+      content="https://www.tcs.bike/images/TCS-logo-BW.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tedenske novice — TCS ng" />
+    <meta
+      name="twitter:description"
+      content="Tedenske novice društva TCS ng: obvestila, napovedi, pomembne informacije in utrinki iz skupnosti."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.tcs.bike/images/TCS-logo-BW.jpg"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsOrganization",
+        "name": "TCS ng",
+        "url": "https://www.tcs.bike/",
+        "email": "info@tcs.bike",
+        "sport": "Mountain biking",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Soška cesta 50",
+          "addressLocality": "Solkan",
+          "addressCountry": "SI"
+        },
+        "sameAs": ["https://www.instagram.com/"]
+      }
+    </script>
+    <title>Tedenske novice — TCS ng</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="./images/icons/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/icons/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/news.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style></style>
+
+    <link rel="stylesheet" href="./css/shared.css" />
+  </head>
+
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header id="header">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="lang-btn" href="./en/tedenske-novice.html" aria-label="English version">EN</a>
+          <a class="link" href="#kontakt" data-scroll>Kontakt</a>
+        </div>
+
+        <a class="brand" href="./index.html" aria-label="TCS ng">
+          <img
+            class="nav-logo"
+            src="./images/TCS-logo-BW.jpg"
+            alt="TCS logo"
+            loading="lazy"
+            decoding="async"
+          />
+          <strong>TCS ng</strong>
+          <span>MTB skupnost</span>
+        </a>
+
+        <div class="nav-right">
+          <a class="link" href="#o-nas" data-scroll>O nas</a>
+          <a class="link" href="#" data-open-map>Kje smo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="page-hero" aria-label="Tedenske novice">
+        <div class="hero-inner" id="heroInner">
+          <h1 class="title">Tedenske novice</h1>
+
+          <div class="sortbar">
+            <label for="sort" class="sortlabel">Razvrsti:</label>
+            <select id="sort" class="sortselect">
+              <option value="newest" selected>Najnovejše</option>
+              <option value="oldest">Najstarejše</option>
+            </select>
+          </div>
+
+          <p class="lead">
+            Kratek pregled dogajanja, delovnih akcij in stanja poti. Klikni
+            “Preberi več” za podrobnosti.
+          </p>
+
+          <div class="rule"></div>
+
+          <div class="backlink">
+            <a href="./index.html">← Nazaj na prvo stran</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="posts" aria-label="Seznam novic">
+        <div id="posts"></div>
+      </section>
+
+      <section class="bottom" id="o-nas">
+        <div class="section-inner" id="aboutInner">
+          <h2>O nas</h2>
+          <p>
+            Zgodba TCS ng se je začela pred več kot dvajsetimi leti, formalno pa
+            smo se kot društvo povezali leta 2019. Naše poslanstvo je
+            ohranjanje, gradnja in razvoj kakovostnih gorskokolesarskih poti v
+            sodelovanju z naravo in lokalnim okoljem.
+            <br /><br />
+            Delujemo na območjih Skalnice, Sabotina, Škabrijela, Marka in širše,
+            kjer čistimo opuščene poti ter gradimo enoslednice, ki zaradi
+            naravnih danosti, razgledov in premišljene zasnove sodijo med
+            najboljše v Sloveniji. Skupno je urejenih približno 40 kilometrov
+            gorskokolesarskih poti, med njimi tudi legalna pot Škabrjelka na
+            Škabrijelu.
+          </p>
+        </div>
+      </section>
+
+      <section class="bottom" id="kontakt">
+        <div class="section-inner" id="contactInner">
+          <h2>Kontakt</h2>
+          <p>Za vprašanja, sodelovanja ali predloge:</p>
+
+          <div class="contact-lines">
+            <a class="link" href="mailto:info@tcs.bike">info@tcs.bike</a>
+            <a class="link" href="tel:+38641705349">+386 41 705 349</a>
+            <a class="link" href="#" onclick="return false;"
+              >Instagram: @tcsng</a
+            >
+          </div>
+
+          <details class="support">
+            <summary>
+              <span class="support-summary">
+                Podpri nas <span class="chev">▾</span>
+              </span>
+            </summary>
+
+            <div class="support-content">
+              <div class="support-text">
+                Če želiš podpreti urejanje in vzdrževanje poti, lahko doniraš
+                preko QR kode ali povezave spodaj.
+              </div>
+
+              <div class="qr-wrap" aria-label="QR koda">
+                <img src="./images/PodpriNasQR.jpg" alt="QR koda za donacijo" />
+              </div>
+
+              <a class="donate-link" href="#" onclick="return false;">
+                Povezava za donacijo
+              </a>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> TCS ng • MTB skupnost</div>
+      <div class="footer-legal">
+        Društvo TCS, Grčna 51, Nova Gorica, 5000 Nova Gorica •
+        <a href="https://www.tcs.bike" target="_blank" rel="noreferrer noopener"
+          >www.tcs.bike</a
+        >
+        • <a href="mailto:info@tcs.bike">info@tcs.bike</a><br />
+        TR: SI56 6100 0003 1105 725, DH d.d. • Mat. št.: 4118871000 • ID št. za
+        DDV: 47512792
+      </div>
+    </footer>
+
+    <div
+      class="modal"
+      id="mapModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal-backdrop" data-close-map></div>
+
+      <div class="modal-card" role="document" aria-label="Lokacija kluba">
+        <div class="modal-head">
+          <div>
+            <div class="modal-title">Kje smo</div>
+            <div class="modal-sub">Soška cesta 50, Solkan</div>
+          </div>
+
+          <button
+            class="modal-x"
+            type="button"
+            aria-label="Zapri"
+            data-close-map
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="map-anim">
+            <iframe
+              id="mapFrame"
+              title="Zemljevid — Soška cesta 50, Solkan"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="modal-actions">
+            <a
+              class="link"
+              id="openMaps"
+              href="https://maps.app.goo.gl/aoZUWQ21vJys5AwV6"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Odpri v Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js" defer></script>
+    <script src="./js/posts.js" defer></script>
+  </body>
+</html>

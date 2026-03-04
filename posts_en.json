@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-02-11-sabotin",
+    "date": "2026-02-11",
+    "important": true,
+    "title": "Trail work: clearing a section on Sabotin",
+    "image": "./post_imgs/gravity-team.jpg",
+    "alt": "Trail work on Sabotin",
+    "short": "On Saturday morning we cleared part of an overgrown mule track and removed branches.",
+    "long": "We met at 8:00, split the tools and, in two groups, fixed the most critical spots.\n\nPlease ride the freshly maintained sections with care for the first few days (the surface is softer). Next time we’ll also work on reinforcing the edges and cleaning drainage channels."
+  },
+  {
+    "id": "2026-02-08-skabrjelka",
+    "date": "2026-02-08",
+    "important": false,
+    "title": "Trail conditions: Škabrjelka",
+    "image": "./post_imgs/news-2.jpg",
+    "alt": "Škabrjelka trail conditions",
+    "short": "Most of the line is dry and fast; shaded sections still have some leaves and small branches.",
+    "long": "Tip: after rain, avoid sliding on the edges and brake as smoothly and in control as possible.\n\nIf you spot a fallen tree or major damage, let us know (email/IG) with the location and a photo."
+  },
+  {
+    "id": "2026-02-05-poziv",
+    "date": "2026-02-05",
+    "important": false,
+    "title": "Call for help: more hands at trail work days",
+    "image": "./post_imgs/news-3.jpg",
+    "alt": "Trail work day",
+    "short": "Lately we’ve been too few on work days, while there’s always more to do.",
+    "long": "If you can contribute 1–2 hours, it makes a huge difference. We have the tools, the meet-up is always simple, and we adapt the pace to the team.\n\nThe goal is well-maintained, safe trails with minimal impact on the environment."
+  }
+]

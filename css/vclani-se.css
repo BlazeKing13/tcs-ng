@@ -1,0 +1,129 @@
+/* Join page additions (keeps base design from index.css) */
+
+.join-page{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 32px var(--pad) 72px;
+}
+
+.join-hero{
+  padding-top: 22px;
+  display: grid;
+  gap: 18px;
+}
+
+.join-hero h1{
+  font-family: var(--font-head);
+  letter-spacing: 0.02em;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.05;
+}
+
+.join-hero .sub{
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.benefits{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.benefit{
+  border: 1px solid var(--hairline);
+  background: rgba(0,0,0,0.22);
+  border-radius: 16px;
+  padding: 14px 14px;
+}
+
+.benefit strong{
+  display:block;
+  margin-bottom: 6px;
+}
+
+.join-cta{
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.join-cta .primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.10);
+  color: var(--cta);
+  text-decoration:none;
+  font-weight: 600;
+}
+
+.join-cta .primary:hover{
+  background: rgba(255,255,255,0.16);
+  color: var(--cta-hover);
+}
+
+.join-cta .hint{
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  max-width: 60ch;
+}
+
+.gallery-row::-webkit-scrollbar{
+  height: 8px;
+}
+.gallery-row::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.18);
+  border-radius: 999px;
+}
+
+@media (min-width: 720px){
+  }
+
+@media (max-width: 720px){
+  .benefits{ grid-template-columns: 1fr; }
+}
+
+/* Photostack (join page) */
+
+/* Sliding sprite strip (join page) */
+.join-photo{
+  margin-top: 34px;
+}
+
+.join-photo h2{
+  font-family: var(--font-head);
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.join-photo .small{
+  font-size: 13px;
+}
+
+.join-photo .sliding-sprite{
+  margin-top: 16px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* track */
+.join-photo .sprite-track{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 14px;
+  will-change: transform;
+}
+
+.join-photo 
