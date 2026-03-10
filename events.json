@@ -10,17 +10,7 @@
     "short": "Zbor ob 8:00. 8:30 start od TCS štaba do spusta",
     "long": "Zbor: 8:00, parkirišče pri TCS štabu.\n\nPrinesi: vodo in kakšno energijsko tablico.\n\nPo akciji druženje, ter pijača in jedača. Če se druženja ne boš udeležil, sporoči prej."
   },
-   {
-    "id": "2026-03-10-delovna-akcija-skalnica",
-    "date": "2026-03-10",
-    "actual": false,
-    "past": false,
-    "title": "test",
-    "flyer": "./event_imgs/TCS.jpg",
-    "alt": "Flyer: Freeriders in the mountains",
-    "short": "Zbor ob 8:00. 8:30 start od TCS štaba do spusta",
-    "long": "Zbor: 8:00, parkirišče pri TCS štabu.\n\nPrinesi: vodo in kakšno energijsko tablico.\n\nPo akciji druženje, ter pijača in jedača. Če se druženja ne boš udeležil, sporoči prej."
-  },
+
   {
     "id": "2026-04-05-skabrjelka-dan-proge",
     "date": "2026-04-05",
