@@ -12,6 +12,8 @@ LABEL_TO_FILE = {
     "event_en": ROOT / "events_en.json",
     "post": ROOT / "posts.json",
     "post_en": ROOT / "posts_en.json",
+    "delete_event": ROOT / "events.json",
+    "delete_post": ROOT / "posts.json",
 }
 
 def detect_target_file():
@@ -77,6 +79,11 @@ def upsert_item(items, new_item):
     items.append(new_item)
     return items
 
+def delete_item(items, item_id):
+    if not item_id:
+        raise SystemExit("Missing required field: id")
+    return [item for item in items if item.get("id") != item_id]
+
 def build_event_item(raw):
     item = {}
     expected_keys = ["id", "date", "actual", "past", "title", "flyer", "alt", "short", "long"]
@@ -105,39 +112,36 @@ def main():
     label, target_file = detect_target_file()
     raw = parse_issue_form(ISSUE_BODY)
 
-    if label in {"event", "event_en"}:
-        item = build_event_item(raw)
-    elif label in {"post", "post_en"}:
-        item = build_post_item(raw)
-    else:
-        raise SystemExit(f"Unsupported label: {label}")
-
     items = load_json(target_file)
     if not isinstance(items, list):
         raise SystemExit(f"{target_file} must contain a JSON array.")
 
-    updated = upsert_item(items, item)
-    save_json(target_file, updated)
+    if label in {"event", "event_en"}:
+        item = build_event_item(raw)
+        updated = upsert_item(items, item)
+        save_json(target_file, updated)
+        print(f"Updated {target_file}")
 
-    print(f"Updated {target_file}")
+    elif label in {"post", "post_en"}:
+        item = build_post_item(raw)
+        updated = upsert_item(items, item)
+        save_json(target_file, updated)
+        print(f"Updated {target_file}")
+
+    elif label == "delete_event":
+        item_id = raw.get("id")
+        updated = delete_item(items, item_id)
+        save_json(target_file, updated)
+        print(f"Deleted event from {target_file}")
+
+    elif label == "delete_post":
+        item_id = raw.get("id")
+        updated = delete_item(items, item_id)
+        save_json(target_file, updated)
+        print(f"Deleted post from {target_file}")
+
+    else:
+        raise SystemExit(f"Unsupported label: {label}")
 
 if __name__ == "__main__":
-    main(
-        elif label == "delete_event":
-    items = load_json(ROOT / "events.json")
-    item_id = raw.get("id")
-    updated = delete_item(items, item_id)
-    save_json(ROOT / "events.json", updated)
-    print("Event deleted")
-
-elif label == "delete_post":
-    items = load_json(ROOT / "posts.json")
-    item_id = raw.get("id")
-    updated = delete_item(items, item_id)
-    save_json(ROOT / "posts.json", updated)
-    print("Post deleted")
-    )
-    
-
-def delete_item(items, item_id):
-    return [item for item in items if item.get("id") != item_id]
+    main()
