@@ -48,14 +48,12 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: flyer
-    attributes:
-      label: "flyer"
-      description: "Path to image"
-      placeholder: "./event_imgs/event-3.jpg"
-    validations:
-      required: true
+- type: input
+  id: flyer
+  attributes:
+    label: "flyer"
+    description: "Ime slike (brez ./event_imgs/)"
+    placeholder: "event-3.jpg"
 
   - type: input
     id: alt
