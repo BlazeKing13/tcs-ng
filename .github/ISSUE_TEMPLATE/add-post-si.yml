@@ -1,0 +1,32 @@
+name: Add Post (SI)
+description: Dodaj objavo
+title: "[POST SI]: "
+labels: ["post"]
+
+body:
+  - type: input
+    id: id
+    attributes:
+      label: Post ID
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Naslov
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Slika
+      placeholder: ./post_imgs/ime.jpg
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Vsebina
