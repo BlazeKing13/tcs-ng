@@ -32,16 +32,5 @@
     "alt": "Flyer: Piknik skupnosti TCS ng",
     "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
     "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
-  },
-    {
-    "id": "2026-05-01-piknik-skupnosti",
-    "date": "2026-05-01",
-    "actual": false,
-    "past": true,
-    "title": "test",
-    "flyer": "./event_imgs/event-3.jpg",
-    "alt": "Flyer: Piknik skupnosti TCS ng",
-    "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
-    "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
   }
 ]
