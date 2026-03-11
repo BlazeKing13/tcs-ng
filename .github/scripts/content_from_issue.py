@@ -122,4 +122,22 @@ def main():
     print(f"Updated {target_file}")
 
 if __name__ == "__main__":
-    main()
+    main(
+        elif label == "delete_event":
+    items = load_json(ROOT / "events.json")
+    item_id = raw.get("id")
+    updated = delete_item(items, item_id)
+    save_json(ROOT / "events.json", updated)
+    print("Event deleted")
+
+elif label == "delete_post":
+    items = load_json(ROOT / "posts.json")
+    item_id = raw.get("id")
+    updated = delete_item(items, item_id)
+    save_json(ROOT / "posts.json", updated)
+    print("Post deleted")
+    )
+    
+
+def delete_item(items, item_id):
+    return [item for item in items if item.get("id") != item_id]
