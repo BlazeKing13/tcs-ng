@@ -42,8 +42,8 @@ body:
     id: image
     attributes:
       label: "image"
-      description: "Path to image"
-      placeholder: "./post_imgs/gravity-team.jpg"
+      description: "Image name (brez ./post_imgs/)"
+      placeholder: "gravity-team.jpg"
     validations:
       required: true
 
