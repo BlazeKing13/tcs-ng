@@ -1,0 +1,57 @@
+name: Create content PR from issue form
+
+on:
+  issues:
+    types: [opened, edited, reopened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  build-content-pr:
+    if: |
+      contains(join(github.event.issue.labels.*.name, ','), 'event') ||
+      contains(join(github.event.issue.labels.*.name, ','), 'event_en') ||
+      contains(join(github.event.issue.labels.*.name, ','), 'post') ||
+      contains(join(github.event.issue.labels.*.name, ','), 'post_en')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate JSON update
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python .github/scripts/content_from_issue.py
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "Update content from issue #${{ github.event.issue.number }}"
+          branch: "issue-content-${{ github.event.issue.number }}"
+          title: "Content update from issue #${{ github.event.issue.number }}"
+          body: |
+            Auto-generated from issue #${{ github.event.issue.number }}.
+          delete-branch: true
