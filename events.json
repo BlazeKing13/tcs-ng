@@ -31,16 +31,5 @@
     "alt": "Flyer: Piknik skupnosti TCS ng",
     "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
     "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
-  },
-  {
-    "id": "TESTv1",
-    "date": "2026-03-11",
-    "actual": false,
-    "past": false,
-    "title": "TEST",
-    "flyer": "./event_imgs/TCS.jpg",
-    "alt": "Test",
-    "short": "TESTing, če deluje",
-    "long": "lore ipsum,lore ipsum,lore ipsum,lore ipsum,lore ipsum\n\nTesting TEsting"
   }
 ]
