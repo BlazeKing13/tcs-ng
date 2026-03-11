@@ -1,32 +1,72 @@
-name: Add Post (SI)
-description: Dodaj objavo
+name: "Add Post (SI)"
+description: "Dodaj ali posodobi objavo"
 title: "[POST SI]: "
 labels: ["post"]
-
 body:
   - type: input
     id: id
     attributes:
-      label: Post ID
+      label: "id"
+      description: "Unikaten ID objave"
+      placeholder: "2026-02-11-sabotin"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: "date"
+      placeholder: "2026-02-11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: important
+    attributes:
+      label: "important"
+      options:
+        - "false"
+        - "true"
     validations:
       required: true
 
   - type: input
     id: title
     attributes:
-      label: Naslov
+      label: "title"
+      placeholder: "Akcija: čiščenje odseka na Sabotinu"
     validations:
       required: true
 
   - type: input
     id: image
     attributes:
-      label: Slika
-      placeholder: ./post_imgs/ime.jpg
+      label: "image"
+      description: "Pot do slike"
+      placeholder: "./post_imgs/gravity-team.jpg"
+    validations:
+      required: true
+
+  - type: input
+    id: alt
+    attributes:
+      label: "alt"
+      placeholder: "Akcija Sabotin"
     validations:
       required: true
 
   - type: textarea
-    id: content
+    id: short
     attributes:
-      label: Vsebina
+      label: "short"
+      placeholder: "Kratek opis objave"
+    validations:
+      required: true
+
+  - type: textarea
+    id: long
+    attributes:
+      label: "long"
+      placeholder: "Daljši opis objave"
+    validations:
+      required: true
