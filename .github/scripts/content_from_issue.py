@@ -50,7 +50,7 @@ def normalize_value(key: str, value: str):
         return None
     if key in {"actual", "past", "important"}:
         return to_bool(value)
-    return value
+    return value.strip()
 
 def load_json(path: Path):
     if not path.exists():
@@ -84,6 +84,11 @@ def delete_item(items, item_id):
         raise SystemExit("Missing required field: id")
     return [item for item in items if item.get("id") != item_id]
 
+def ensure_prefixed_path(value: str, prefix: str):
+    if value.startswith(prefix):
+        return value
+    return f"{prefix}{value}"
+
 def build_event_item(raw):
     item = {}
     expected_keys = ["id", "date", "actual", "past", "title", "flyer", "alt", "short", "long"]
@@ -93,7 +98,7 @@ def build_event_item(raw):
             value = normalize_value(key, raw[key])
             if value is not None:
                 if key == "flyer":
-                    item[key] = f"./event_imgs/{value}"
+                    item[key] = ensure_prefixed_path(value, "./event_imgs/")
                 else:
                     item[key] = value
 
@@ -108,7 +113,7 @@ def build_post_item(raw):
             value = normalize_value(key, raw[key])
             if value is not None:
                 if key == "image":
-                    item[key] = f"./post_imgs/{value}"
+                    item[key] = ensure_prefixed_path(value, "./post_imgs/")
                 else:
                     item[key] = value
 
@@ -118,33 +123,39 @@ def main():
     label, target_file = detect_target_file()
     raw = parse_issue_form(ISSUE_BODY)
 
-    items = load_json(target_file)
-    if not isinstance(items, list):
-        raise SystemExit(f"{target_file} must contain a JSON array.")
+    if label in {"event", "event_en", "post", "post_en"}:
+        items = load_json(target_file)
+        if not isinstance(items, list):
+            raise SystemExit(f"{target_file} must contain a JSON array.")
 
-    if label in {"event", "event_en"}:
-        item = build_event_item(raw)
-        updated = upsert_item(items, item)
-        save_json(target_file, updated)
-        print(f"Updated {target_file}")
+        if label in {"event", "event_en"}:
+            item = build_event_item(raw)
+        else:
+            item = build_post_item(raw)
 
-    elif label in {"post", "post_en"}:
-        item = build_post_item(raw)
         updated = upsert_item(items, item)
         save_json(target_file, updated)
         print(f"Updated {target_file}")
 
     elif label == "delete_event":
         item_id = raw.get("id")
-        updated = delete_item(items, item_id)
-        save_json(target_file, updated)
-        print(f"Deleted event from {target_file}")
+        for path in [ROOT / "events.json", ROOT / "events_en.json"]:
+            items = load_json(path)
+            if not isinstance(items, list):
+                raise SystemExit(f"{path} must contain a JSON array.")
+            updated = delete_item(items, item_id)
+            save_json(path, updated)
+        print("Deleted event from events.json and events_en.json")
 
     elif label == "delete_post":
         item_id = raw.get("id")
-        updated = delete_item(items, item_id)
-        save_json(target_file, updated)
-        print(f"Deleted post from {target_file}")
+        for path in [ROOT / "posts.json", ROOT / "posts_en.json"]:
+            items = load_json(path)
+            if not isinstance(items, list):
+                raise SystemExit(f"{path} must contain a JSON array.")
+            updated = delete_item(items, item_id)
+            save_json(path, updated)
+        print("Deleted post from posts.json and posts_en.json")
 
     else:
         raise SystemExit(f"Unsupported label: {label}")
