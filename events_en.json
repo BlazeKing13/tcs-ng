@@ -42,5 +42,16 @@
     "alt": "Flyer: TCS ng New Year get-together",
     "short": "Casual get-together for members and friends. Food/drinks by agreement.",
     "long": "Location: (add)\n\nBring: something for the grill or a drink.\n\nIf you’re coming, please send us an Instagram DM so we can plan roughly."
+  },
+  {
+    "id": "TESTv2",
+    "date": "2026-03-11",
+    "actual": false,
+    "past": false,
+    "title": "TEST",
+    "flyer": "./event_imgs/TCS.jpg",
+    "alt": "TEST",
+    "short": "TEstTEstTEstTEstTEstTEstTEst",
+    "long": "TEstTEstTEst"
   }
 ]
