@@ -1,0 +1,14 @@
+name: "Delete Event"
+description: "Remove event from events.json"
+title: "[DELETE EVENT]: "
+labels: ["delete_event"]
+
+body:
+  - type: input
+    id: id
+    attributes:
+      label: "id"
+      description: "ID dogodka za brisanje"
+      placeholder: "2026-05-01-piknik-skupnosti"
+    validations:
+      required: true
