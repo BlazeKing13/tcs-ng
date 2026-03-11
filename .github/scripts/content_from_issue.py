@@ -2,7 +2,6 @@ import json
 import os
 from pathlib import Path
 
-ISSUE_TITLE = os.environ.get("ISSUE_TITLE", "")
 ISSUE_BODY = os.environ.get("ISSUE_BODY", "")
 ISSUE_LABELS = os.environ.get("ISSUE_LABELS", "")
 
@@ -16,25 +15,13 @@ LABEL_TO_FILE = {
 }
 
 def detect_target_file():
-    labels = [x.strip() for x in ISSUE_LABELS.split(",") if x.strip()]
+    labels = [x.strip().lower() for x in ISSUE_LABELS.split(",") if x.strip()]
     for label, path in LABEL_TO_FILE.items():
         if label in labels:
             return label, path
-    raise SystemExit("No supported label found on issue.")
+    raise SystemExit(f"No supported label found on issue. Got: {labels}")
 
 def parse_issue_form(body: str):
-    """
-    GitHub issue forms arrive roughly like:
-
-    ### Event ID
-    lan-party-2026
-
-    ### Naslov
-    LAN Party
-
-    ### Datum
-    2026-04-12
-    """
     result = {}
     current_key = None
     current_value = []
@@ -53,22 +40,15 @@ def parse_issue_form(body: str):
 
     return result
 
-def normalize_key(key: str):
-    mapping = {
-        "Event ID": "id",
-        "Post ID": "id",
-        "Naslov": "title",
-        "Title": "title",
-        "Datum": "date",
-        "Date": "date",
-        "Slika": "image",
-        "Image path": "image",
-        "Opis": "description",
-        "Description": "description",
-        "Vsebina": "content",
-        "Content": "content",
-    }
-    return mapping.get(key, key.lower().replace(" ", "_"))
+def to_bool(value: str):
+    return str(value).strip().lower() == "true"
+
+def normalize_value(key: str, value: str):
+    if value in ("", "_No response_"):
+        return None
+    if key in {"actual", "past"}:
+        return to_bool(value)
+    return value
 
 def load_json(path: Path):
     if not path.exists():
@@ -85,35 +65,53 @@ def save_json(path: Path, data):
     )
 
 def upsert_item(items, new_item):
-    if "id" not in new_item or not new_item["id"]:
+    item_id = new_item.get("id")
+    if not item_id:
         raise SystemExit("Missing required field: id")
 
     for i, item in enumerate(items):
-        if isinstance(item, dict) and item.get("id") == new_item["id"]:
+        if isinstance(item, dict) and item.get("id") == item_id:
             items[i] = {**item, **new_item}
             return items
 
     items.append(new_item)
     return items
 
+def build_event_item(raw):
+    item = {}
+    expected_keys = ["id", "date", "actual", "past", "title", "flyer", "alt", "short", "long"]
+
+    for key in expected_keys:
+        if key in raw:
+            value = normalize_value(key, raw[key])
+            if value is not None:
+                item[key] = value
+
+    return item
+
 def main():
     label, target_file = detect_target_file()
     raw = parse_issue_form(ISSUE_BODY)
 
-    data = {}
-    for key, value in raw.items():
-        norm = normalize_key(key)
-        if value not in ("", "_No response_"):
-            data[norm] = value
+    if label in {"event", "event_en"}:
+        item = build_event_item(raw)
+    else:
+        # začasno pusti staro logiko za poste, dokler ne dobim tvoje posts strukture
+        item = {}
+        for key, value in raw.items():
+            norm = key.strip().lower()
+            normalized = normalize_value(norm, value)
+            if normalized is not None:
+                item[norm] = normalized
 
     items = load_json(target_file)
     if not isinstance(items, list):
         raise SystemExit(f"{target_file} must contain a JSON array.")
 
-    updated = upsert_item(items, data)
+    updated = upsert_item(items, item)
     save_json(target_file, updated)
 
-    print(f"Updated {target_file} from label {label}")
+    print(f"Updated {target_file}")
 
 if __name__ == "__main__":
     main()
