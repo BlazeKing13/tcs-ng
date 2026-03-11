@@ -92,7 +92,10 @@ def build_event_item(raw):
         if key in raw:
             value = normalize_value(key, raw[key])
             if value is not None:
-                item[key] = value
+                if key == "flyer":
+                    item[key] = f"./event_imgs/{value}"
+                else:
+                    item[key] = value
 
     return item
 
@@ -104,7 +107,10 @@ def build_post_item(raw):
         if key in raw:
             value = normalize_value(key, raw[key])
             if value is not None:
-                item[key] = value
+                if key == "image":
+                    item[key] = f"./post_imgs/{value}"
+                else:
+                    item[key] = value
 
     return item
 
