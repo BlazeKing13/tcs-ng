@@ -42,8 +42,8 @@ body:
     id: image
     attributes:
       label: "image"
-      description: "Pot do slike"
-      placeholder: "./post_imgs/gravity-team.jpg"
+      description: "Ime slike (brez ./post_imgs/)"
+      placeholder: "gravity-team.jpg"
     validations:
       required: true
 
