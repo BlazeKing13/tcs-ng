@@ -27,21 +27,11 @@
     "date": "2026-05-01",
     "actual": false,
     "past": false,
-    "title": "Piknik skupnosti TCS ng",
+    "title": "Piknik kupnosti TCS ng",
     "flyer": "./event_imgs/event-3.jpg",
     "alt": "Flyer: Piknik skupnosti TCS ng",
     "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
     "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
-  },
-  {
-    "id": "2026-01-01-novo-leto",
-    "date": "2026-01-01",
-    "actual": false,
-    "past": true,
-    "title": "Novoletno druženje društva TCS ng",
-    "flyer": "./event_imgs/event-3.jpg",
-    "alt": "Flyer: Druženje novo leto TCS ng",
-    "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
-    "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
   }
+  
 ]
