@@ -1,0 +1,32 @@
+name: Add Post (EN)
+description: Add post
+title: "[POST EN]: "
+labels: ["post_en"]
+
+body:
+  - type: input
+    id: id
+    attributes:
+      label: Post ID
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Image path
+      placeholder: ./post_imgs/image.jpg
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
