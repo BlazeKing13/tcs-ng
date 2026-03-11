@@ -46,7 +46,7 @@ def to_bool(value: str):
 def normalize_value(key: str, value: str):
     if value in ("", "_No response_"):
         return None
-    if key in {"actual", "past"}:
+    if key in {"actual", "past", "important"}:
         return to_bool(value)
     return value
 
@@ -89,20 +89,28 @@ def build_event_item(raw):
 
     return item
 
+def build_post_item(raw):
+    item = {}
+    expected_keys = ["id", "date", "important", "title", "image", "alt", "short", "long"]
+
+    for key in expected_keys:
+        if key in raw:
+            value = normalize_value(key, raw[key])
+            if value is not None:
+                item[key] = value
+
+    return item
+
 def main():
     label, target_file = detect_target_file()
     raw = parse_issue_form(ISSUE_BODY)
 
     if label in {"event", "event_en"}:
         item = build_event_item(raw)
+    elif label in {"post", "post_en"}:
+        item = build_post_item(raw)
     else:
-        # začasno pusti staro logiko za poste, dokler ne dobim tvoje posts strukture
-        item = {}
-        for key, value in raw.items():
-            norm = key.strip().lower()
-            normalized = normalize_value(norm, value)
-            if normalized is not None:
-                item[norm] = normalized
+        raise SystemExit(f"Unsupported label: {label}")
 
     items = load_json(target_file)
     if not isinstance(items, list):
