@@ -11,17 +11,7 @@
     "long": "Zbor: 8:00, parkirišče pri TCS štabu.\n\nPrinesi: vodo in kakšno energijsko tablico.\n\nPo akciji druženje, ter pijača in jedača. Če se druženja ne boš udeležil, sporoči prej."
   },
 
-  {
-    "id": "2026-04-05-skabrjelka-dan-proge",
-    "date": "2026-04-05",
-    "actual": false,
-    "past": false,
-    "title": "Škabrjelka — Dan proge",
-    "flyer": "./event_imgs/event-2.jpg",
-    "alt": "Flyer: Škabrjelka — Dan proge",
-    "short": "Skupinski ogledi linije, varnostni briefing in druženje. Primerno za vse.",
-    "long": "Program:\n\n10:00 — zbor + briefing\n11:00 — vodene vožnje (skupine po nivoju)\n13:00 — druženje in Q&A\n\nVarnost: čelada obvezna, priporočamo ščitnike."
-  },
+
   {
     "id": "2026-05-01-piknik-skupnosti",
     "date": "2026-05-01",
