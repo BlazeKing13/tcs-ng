@@ -1175,13 +1175,17 @@ html {
   background: rgba(0, 0, 0, 0.55);
 }
 
-#intro-logo {
-  position: relative;
-  max-width: 90vw;
-  max-height: 60vh;
-  width: auto;
-  height: auto;
-  animation: introMove 2s ease forwards;
+#intro-logo{
+  position:relative;
+  max-width:90vw;
+  max-height:60vh;
+  width:auto;
+  height:auto;
+
+  will-change: transform;
+  transform: translateZ(0);
+
+  animation:introMove 4s ease forwards;
 }
 
 /* telefon */
