@@ -1078,3 +1078,12 @@ a { color: inherit; }
   border: 1px solid var(--border) !important;
   height: 340px !important;
 }
+@media (max-width: 640px) {
+  .topbar {
+    transition: transform 300ms var(--ease), background 400ms var(--ease), border-color 400ms var(--ease);
+  }
+
+  .topbar.hide-mobile {
+    transform: translateY(-100%);
+  }
+}
