@@ -141,15 +141,24 @@
   }
   // ---------- Intro animation ----------
   function initIntroAnimation() {
-    const intro = document.getElementById("intro-animation");
-    if (!intro) return;
+  const intro = document.getElementById("intro-animation");
+  if (!intro) return;
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        intro.style.display = "none";
-      }, 3000);
-    });
-  }
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      intro.style.opacity = "0";
+      intro.style.pointerEvents = "none";
+
+      setTimeout(()=>{
+        intro.remove();
+      },600);
+
+    }, 3400);
+
+  });
+}
 
   document.addEventListener("DOMContentLoaded", () => {
     initHeader();
