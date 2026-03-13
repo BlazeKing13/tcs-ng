@@ -1080,10 +1080,11 @@ a { color: inherit; }
 }
 @media (max-width: 640px) {
   .topbar {
+    transform: translateY(-100%);
     transition: transform 300ms var(--ease), background 400ms var(--ease), border-color 400ms var(--ease);
   }
 
-  .topbar.hide-mobile {
-    transform: translateY(-100%);
+  .topbar.scrolled {
+    transform: translateY(0);
   }
 }
