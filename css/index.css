@@ -1181,7 +1181,7 @@ html {
   max-height: 60vh;
   width: auto;
   height: auto;
-  animation: introMove 4s ease forwards;
+  animation: introMove 2s ease forwards;
 }
 
 /* telefon */
