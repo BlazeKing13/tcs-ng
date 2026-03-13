@@ -398,7 +398,7 @@
       </div>
     </div>
 
-    <script src="../js/main.js" defer></script>
+    <script src="./js/main.js" defer></script>
     <script>
       // Scroll reveal
       document.addEventListener('DOMContentLoaded', function() {
@@ -422,13 +422,27 @@
         els.forEach(function(el) { io.observe(el); });
       });
 
-      // Topbar scroll state
+      // Topbar scroll state + mobile hide on scroll down
       document.addEventListener('DOMContentLoaded', function() {
         var tb = document.querySelector('.topbar');
         if (!tb) return;
+
+        var lastY = 0;
+
         window.addEventListener('scroll', function() {
-          tb.classList.toggle('scrolled', window.scrollY > 8);
+          var y = window.scrollY;
+
+          tb.classList.toggle('scrolled', y > 8);
+
+          if (window.innerWidth <= 640) {
+            tb.classList.toggle('hide-mobile', y > lastY && y > 80);
+          } else {
+            tb.classList.remove('hide-mobile');
+          }
+
+          lastY = y;
         }, { passive: true });
+
         if (window.scrollY > 8) tb.classList.add('scrolled');
       });
     </script>
