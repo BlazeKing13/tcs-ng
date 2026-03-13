@@ -1,6 +1,6 @@
 /* TCS NG — main shared script (header, smooth scroll, reveals, map modal) */
 (function () {
-  "use strict";
+  ("use strict");
 
   // ---------- Header scroll state ----------
   function initHeader() {
@@ -60,7 +60,7 @@
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.12 }
     );
 
     targets.forEach((t) => io.observe(t));
@@ -139,6 +139,17 @@
       }, DURATION_MS);
     });
   }
+  // ---------- Intro animation ----------
+  function initIntroAnimation() {
+    const intro = document.getElementById("intro-animation");
+    if (!intro) return;
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        intro.style.display = "none";
+      }, 4000);
+    });
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     initHeader();
@@ -147,5 +158,6 @@
     initReveals();
     initMapModal();
     initGravityFlyby();
+    initIntroAnimation();
   });
 })();
