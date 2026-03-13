@@ -422,28 +422,37 @@
         els.forEach(function(el) { io.observe(el); });
       });
 
-      // Topbar scroll state + mobile hide on scroll down
+     // Topbar scroll state + mobile show/hide
       document.addEventListener('DOMContentLoaded', function() {
         var tb = document.querySelector('.topbar');
         if (!tb) return;
-
-        var lastY = 0;
-
+      
+        var mobileQuery = window.matchMedia('(max-width: 640px)');
+        var lastY = window.scrollY;
+      
         window.addEventListener('scroll', function() {
           var y = window.scrollY;
-
+          var isMobile = mobileQuery.matches;
+      
           tb.classList.toggle('scrolled', y > 8);
-
-          if (window.innerWidth <= 640) {
-            tb.classList.toggle('hide-mobile', y > lastY && y > 80);
+      
+          if (isMobile) {
+            if (y <= 0) {
+              tb.classList.remove('nav-visible');
+            } else if (y < lastY) {
+              tb.classList.add('nav-visible');
+            } else if (y > lastY + 10) {
+              tb.classList.remove('nav-visible');
+            }
           } else {
-            tb.classList.remove('hide-mobile');
+            tb.classList.add('nav-visible');
           }
-
+      
           lastY = y;
         }, { passive: true });
-
-        if (window.scrollY > 8) tb.classList.add('scrolled');
+      
+        // Initial state
+        if (!mobileQuery.matches) tb.classList.add('nav-visible');
       });
     </script>
   </body>
