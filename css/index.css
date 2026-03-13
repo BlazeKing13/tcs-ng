@@ -1,7 +1,6 @@
 :root {
-  --font-body:
-    "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Arial, sans-serif;
   --font-head: "Oswald", "Inter", sans-serif;
 
   --text: rgba(255, 255, 255, 0.92);
@@ -41,8 +40,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background:
-    linear-gradient(
+  background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.22) 0%,
       rgba(0, 0, 0, 0.55) 58%,
@@ -72,9 +70,7 @@ header {
   top: 0;
   z-index: 50;
   padding: 14px var(--pad);
-  transition:
-    background 220ms var(--ease),
-    border-color 220ms var(--ease);
+  transition: background 220ms var(--ease), border-color 220ms var(--ease);
   background: transparent;
   border-bottom: 1px solid transparent;
 }
@@ -147,9 +143,7 @@ header.scrolled {
   letter-spacing: 0.15px;
   position: relative;
   padding: 6px 0;
-  transition:
-    color 180ms var(--ease),
-    opacity 180ms var(--ease);
+  transition: color 180ms var(--ease), opacity 180ms var(--ease);
 }
 .nav a.link::after,
 .cta-list a::after,
@@ -164,9 +158,7 @@ header.scrolled {
   background: var(--cta-underline);
   transform: scaleX(0);
   transform-origin: left;
-  transition:
-    transform 180ms var(--ease),
-    background 180ms var(--ease);
+  transition: transform 180ms var(--ease), background 180ms var(--ease);
 }
 .nav a.link:hover,
 .cta-list a:hover,
@@ -213,9 +205,7 @@ header.scrolled {
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
   transform: translateY(10px) scale(0.96);
   opacity: 0;
-  transition:
-    transform 260ms var(--ease),
-    opacity 260ms var(--ease);
+  transition: transform 260ms var(--ease), opacity 260ms var(--ease);
   overflow: hidden;
 }
 
@@ -296,9 +286,7 @@ header.scrolled {
   transform: scale(1.06);
   filter: blur(6px);
   opacity: 0.88;
-  transition:
-    transform 520ms var(--ease),
-    filter 520ms var(--ease),
+  transition: transform 520ms var(--ease), filter 520ms var(--ease),
     opacity 420ms var(--ease);
 }
 
@@ -352,9 +340,7 @@ main {
   gap: 14px;
   opacity: 0;
   transform: translateY(12px);
-  transition:
-    opacity 700ms var(--ease),
-    transform 700ms var(--ease);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
 }
 .hero-inner.visible {
   opacity: 1;
@@ -367,9 +353,7 @@ main {
   display: block;
   margin-bottom: 12px;
   opacity: 0.95;
-  transition:
-    transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 400ms;
+  transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 400ms;
 }
 
 /* zelo subtile hover efekt */
@@ -442,14 +426,10 @@ main {
   -webkit-text-fill-color: transparent;
 
   /* Subtle depth shadow */
-  text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.25),
-    0 8px 20px rgba(0, 0, 0, 0.22);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.22);
 
   /* Keep same transition as other links */
-  transition:
-    color 180ms var(--ease),
-    opacity 180ms var(--ease),
+  transition: color 180ms var(--ease), opacity 180ms var(--ease),
     filter 180ms var(--ease);
 }
 
@@ -465,9 +445,7 @@ main {
 .cta-list a.cta-gravity:hover {
   filter: brightness(1.4) contrast(1.25);
   opacity: 1;
-  text-shadow:
-    0 0 15px rgba(167, 129, 186, 0.7),
-    0 2px 4px rgba(0, 0, 0, 0.8),
+  text-shadow: 0 0 15px rgba(167, 129, 186, 0.7), 0 2px 4px rgba(0, 0, 0, 0.8),
     0 4px 16px rgba(0, 0, 0, 0.6);
 }
 
@@ -498,8 +476,7 @@ main {
   height: 180px;
   transform: translateY(-50%) skewX(-18deg);
   opacity: 0;
-  background:
-    radial-gradient(
+  background: radial-gradient(
       closest-side,
       rgba(255, 255, 255, 0.18),
       rgba(255, 255, 255, 0)
@@ -638,9 +615,7 @@ section {
   text-align: center;
   opacity: 0;
   transform: translateY(14px);
-  transition:
-    opacity 650ms var(--ease),
-    transform 650ms var(--ease);
+  transition: opacity 650ms var(--ease), transform 650ms var(--ease);
 }
 .section-inner.visible {
   opacity: 1;
@@ -712,9 +687,7 @@ details.support summary::-webkit-details-marker {
   background: var(--cta-underline);
   transform: scaleX(0);
   transform-origin: left;
-  transition:
-    transform 180ms var(--ease),
-    background 180ms var(--ease);
+  transition: transform 180ms var(--ease), background 180ms var(--ease);
 }
 details.support summary:hover .support-summary::after {
   transform: scaleX(1);
@@ -834,8 +807,7 @@ footer .footer-legal a:hover {
   transform-origin: center;
   will-change: transform, opacity;
   opacity: 1;
-  background:
-    linear-gradient(
+  background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.1) 0%,
       rgba(0, 0, 0, 0.55) 65%,
@@ -985,53 +957,50 @@ footer .footer-legal a:hover {
 
 /* ===== CTA Gravity logo (namesto teksta) ===== */
 .cta-list a.cta-gravity {
-  background: rgba(255,255,255,0.04) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
   -webkit-text-fill-color: initial;
   color: inherit !important;
   text-shadow: none;
   display: inline-flex;
   align-items: center;
   padding: 10px 14px;
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   gap: 12px;
   cursor: pointer;
-  transition:
-    transform 180ms var(--ease),
-    background 180ms var(--ease),
-    border-color 180ms var(--ease),
-    box-shadow 180ms var(--ease);
+  transition: transform 180ms var(--ease), background 180ms var(--ease),
+    border-color 180ms var(--ease), box-shadow 180ms var(--ease);
 }
 
-.cta-list a.cta-gravity:focus-visible{
-  outline: 2px solid rgba(255,255,255,0.55);
+.cta-list a.cta-gravity:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
   outline-offset: 3px;
 }
 
-.cta-list a.cta-gravity:hover{
+.cta-list a.cta-gravity:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.07) !important;
-  border-color: rgba(255,255,255,0.22);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
 }
 
 .cta-list a.cta-gravity::after {
   display: none; /* ne riši underline pod sliko */
 }
 
-.cta-gravity-inner{
+.cta-gravity-inner {
   display: inline-flex;
   align-items: center;
   gap: 12px;
 }
 
-.cta-gravity-text{
+.cta-gravity-text {
   display: grid;
   gap: 2px;
   line-height: 1.05;
 }
 
-.cta-gravity-title{
+.cta-gravity-title {
   font-family: var(--font-head);
   text-transform: uppercase;
   letter-spacing: 1.2px;
@@ -1039,7 +1008,7 @@ footer .footer-legal a:hover {
   opacity: 0.92;
 }
 
-.cta-gravity-sub{
+.cta-gravity-sub {
   font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.2px;
@@ -1050,9 +1019,7 @@ footer .footer-legal a:hover {
   width: auto;
   display: block;
   opacity: 0.95;
-  transition:
-    transform 180ms var(--ease),
-    opacity 180ms var(--ease),
+  transition: transform 180ms var(--ease), opacity 180ms var(--ease),
     filter 180ms var(--ease);
 }
 
@@ -1061,18 +1028,24 @@ footer .footer-legal a:hover {
   opacity: 1;
 }
 
-@media (max-width: 420px){
-  .cta-list a.cta-gravity{
+@media (max-width: 420px) {
+  .cta-list a.cta-gravity {
     padding: 10px 12px;
   }
-  .cta-gravity-logo{ height: 52px; }
-  .cta-gravity-title{ font-size: 11px; }
-  .cta-gravity-sub{ font-size: 11px; }
+  .cta-gravity-logo {
+    height: 52px;
+  }
+  .cta-gravity-title {
+    font-size: 11px;
+  }
+  .cta-gravity-sub {
+    font-size: 11px;
+  }
 }
 
 /* Photo carousel (hero) */
 
-.photo-carousel{
+.photo-carousel {
   --pc-w: min(620px, 86vw);
   --pc-h: min(320px, 42vh);
   --pc-z: 340px;
@@ -1086,7 +1059,7 @@ footer .footer-legal a:hover {
   perspective: 1100px;
 }
 
-.photo-carousel__ring{
+.photo-carousel__ring {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -1095,13 +1068,13 @@ footer .footer-legal a:hover {
   animation: tcsCarouselRotation 28s infinite linear;
 }
 
-@media (hover: hover) and (pointer: fine){
-  .photo-carousel:hover .photo-carousel__ring{
+@media (hover: hover) and (pointer: fine) {
+  .photo-carousel:hover .photo-carousel__ring {
     animation-play-state: paused;
   }
 }
 
-.photo-carousel__ring figure{
+.photo-carousel__ring figure {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1116,18 +1089,17 @@ footer .footer-legal a:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
-.photo-carousel{
+.photo-carousel {
   --items: 8; /* <-- samo to spremeniš, če želiš drugo število */
 }
 
-.photo-carousel__ring figure{
+.photo-carousel__ring figure {
   --i: 0;
   transform: translate(-50%, -50%)
-             rotateY(calc(var(--i) * (360deg / var(--items))))
-             translateZ(var(--pc-z));
+    rotateY(calc(var(--i) * (360deg / var(--items)))) translateZ(var(--pc-z));
 }
 
-.photo-carousel img{
+.photo-carousel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1135,40 +1107,109 @@ footer .footer-legal a:hover {
   cursor: pointer;
 }
 
-.photo-carousel img:hover{
+.photo-carousel img:hover {
   transform: scale(1.12);
 }
 
-@keyframes tcsCarouselRotation{
-  from{ transform: rotateY(0deg); }
-  to{ transform: rotateY(-360deg); }
+@keyframes tcsCarouselRotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
 }
 
-@media (max-width: 520px) and (orientation: portrait){
-  .photo-carousel{
-    --pc-card-w: 160px;   
+@media (max-width: 520px) and (orientation: portrait) {
+  .photo-carousel {
+    --pc-card-w: 160px;
     --pc-card-h: 105px;
-    --pc-z: 200px;        
-    --pc-h: 240px;        
-    --pc-w: 88vw;         
+    --pc-z: 200px;
+    --pc-h: 240px;
+    --pc-w: 88vw;
   }
 }
 /* Translate to EN  */
-.lang-btn{
-  background: rgba(255,255,255,0.10);
+.lang-btn {
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   padding: 8px 12px;
   font: inherit;
   cursor: pointer;
 }
-.lang-btn:hover{ background: rgba(255,255,255,0.16); }
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
 
- 
-html { scroll-padding-top: 0 !important; }
+html {
+  scroll-padding-top: 0 !important;
+}
 
-@media (max-width: 560px){
-  .bg{ transform: none; }
-  header{ transform: translateZ(0); will-change: backdrop-filter; }
+@media (max-width: 560px) {
+  .bg {
+    transform: none;
+  }
+  header {
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+  }
+}
+/* INTRO ANIMATION */
+
+#intro-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#intro-logo {
+  position: relative;
+  max-width: 90vw;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  animation: introMove 4s ease forwards;
+}
+
+/* telefon */
+@media (max-width: 768px) {
+  #intro-logo {
+    max-width: 92vw;
+    max-height: 45vh;
+  }
+}
+
+@keyframes introMove {
+  0% {
+    transform: translateX(-120vw);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  65% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(80vw, 120vh) rotate(12deg);
+    opacity: 0;
+  }
 }
