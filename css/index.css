@@ -1224,3 +1224,6 @@ html {
   }
 
 }
+#intro-animation{
+  transition: opacity .6s ease;
+}
