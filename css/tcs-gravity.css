@@ -1079,12 +1079,22 @@ a { color: inherit; }
   height: 340px !important;
 }
 @media (max-width: 640px) {
+  .topbar { padding: 14px 20px; }
+  .container { padding: 0 20px; }
+  .hero-inner { padding-bottom: 60px; }
+
+  .nav a:not(.nav-cta) { display: none; }
+
+  .title { font-size: clamp(48px, 14vw, 72px); }
+
+  .feature-grid { grid-template-columns: 1fr; }
+
   .topbar {
     transform: translateY(-100%);
     transition: transform 300ms var(--ease), background 400ms var(--ease), border-color 400ms var(--ease);
   }
 
-  .topbar.scrolled {
+  .topbar.nav-visible {
     transform: translateY(0);
   }
 }
