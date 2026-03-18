@@ -774,6 +774,127 @@ footer .footer-legal a:hover {
   border-bottom-color: rgba(255, 255, 255, 0.45);
 }
 
+/* ================================
+   Sponsor stripe — Podpirajo nas tudi
+   ================================ */
+
+.sponsors-section {
+  padding-top: 40px;
+  margin-top: 40px;
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.sponsor-track-wrap {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-top: 28px;
+  overflow: hidden;
+
+  /* Fade edges */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,0,0,0.15) 4%,
+    rgba(0,0,0,1) 14%,
+    rgba(0,0,0,1) 86%,
+    rgba(0,0,0,0.15) 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,0,0,0.15) 4%,
+    rgba(0,0,0,1) 14%,
+    rgba(0,0,0,1) 86%,
+    rgba(0,0,0,0.15) 96%,
+    transparent 100%
+  );
+}
+
+.sponsor-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: sponsorScroll 32s linear infinite;
+  will-change: transform;
+}
+
+.sponsor-track-wrap:hover .sponsor-track {
+  animation-play-state: paused;
+}
+
+.sponsor-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  height: 72px;
+  border-right: 1px solid var(--hairline);
+  flex-shrink: 0;
+  transition: opacity 220ms var(--ease);
+  opacity: 0.55;
+}
+
+.sponsor-item:hover {
+  opacity: 1;
+}
+
+/* If the sponsor has a logo img */
+.sponsor-item img {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: inherit;
+  display: block;
+  transition: filter 220ms var(--ease);
+}
+
+.sponsor-item:hover img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.25));
+}
+
+/* Fallback: text name when no logo */
+.sponsor-name {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+}
+
+@keyframes sponsorScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .sponsor-track {
+    animation-duration: 22s;
+  }
+  .sponsor-item {
+    padding: 0 28px;
+    height: 60px;
+  }
+  .sponsor-name {
+    font-size: 12px;
+  }
+}
+
 /* Small screens */
 @media (max-width: 560px) {
   .intro-panel {
