@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2026-03-10-delovna-akcija-skalnica",
+    "date": "2026-03-10",
+    "actual": true,
+    "past": false,
+    "title": "Freeriders",
+    "flyer": "./event_imgs/TCS.jpg",
+    "alt": "Flyer: Freeriders in the mountains",
+    "short": "Meet at 8:00. 8:30 start from the TCS HQ to the descent.",
+    "long": "Meet-up: 8:00, parking lot by the TCS HQ.\n\nBring: water and a snack/energy bar.\n\nAfterwards we’ll hang out with some food and drinks. If you won’t join the social part, please let us know in advance."
+  },
+  {
+    "id": "2026-04-05-skabrjelka-dan-proge",
+    "date": "2026-04-05",
+    "actual": false,
+    "past": false,
+    "title": "Škabrjelka — Trail Day",
+    "flyer": "./event_imgs/event-2.jpg",
+    "alt": "Flyer: Škabrjelka — Trail Day",
+    "short": "Group line inspections, safety briefing and hangout. Suitable for everyone.",
+    "long": "Schedule:\n\n10:00 — meet-up + briefing\n11:00 — guided rides (groups by level)\n13:00 — hangout and Q&A\n\nSafety: helmet required; pads recommended."
+  },
+  {
+    "id": "2026-05-01-piknik-skupnosti",
+    "date": "2026-05-01",
+    "actual": false,
+    "past": false,
+    "title": "TCS ng Community Picnic",
+    "flyer": "./event_imgs/event-3.jpg",
+    "alt": "Flyer: TCS ng community picnic",
+    "short": "Casual get-together for members and friends. Food/drinks by agreement.",
+    "long": "Location: (add)\n\nBring: something for the grill or a drink.\n\nIf you’re coming, please send us an Instagram DM so we can plan roughly."
+  },
+  {
+    "id": "2026-01-01-novo-leto",
+    "date": "2026-01-01",
+    "actual": false,
+    "past": true,
+    "title": "New Year get-together (TCS ng)",
+    "flyer": "./event_imgs/event-3.jpg",
+    "alt": "Flyer: TCS ng New Year get-together",
+    "short": "Casual get-together for members and friends. Food/drinks by agreement.",
+    "long": "Location: (add)\n\nBring: something for the grill or a drink.\n\nIf you’re coming, please send us an Instagram DM so we can plan roughly."
+  }
+]
