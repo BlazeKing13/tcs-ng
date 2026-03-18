@@ -820,7 +820,7 @@ footer .footer-legal a:hover {
   align-items: center;
   gap: 0;
   width: max-content;
-  animation: sponsorScroll 32s linear infinite;
+  animation: sponsorScroll 26s linear infinite;
   will-change: transform;
 }
 
@@ -850,14 +850,28 @@ footer .footer-legal a:hover {
   width: auto;
   max-width: 140px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: inherit;
   display: block;
-  transition: filter 220ms var(--ease);
+  transition: filter 220ms var(--ease), opacity 220ms var(--ease);
 }
 
-.sponsor-item:hover img {
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.25));
+/* Dark-on-white logos: invert to white */
+.sponsor-item img.logo-invert {
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+}
+.sponsor-item:hover img.logo-invert {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
+}
+
+/* Color/light logos: just brighten slightly */
+.sponsor-item img.logo-color {
+  filter: brightness(1.15) saturate(0.85);
+  opacity: 0.7;
+}
+.sponsor-item:hover img.logo-color {
+  opacity: 1;
+  filter: brightness(1.25) saturate(1);
 }
 
 /* Fallback: text name when no logo */
