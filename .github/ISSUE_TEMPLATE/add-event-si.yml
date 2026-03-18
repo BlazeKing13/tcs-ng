@@ -1,0 +1,82 @@
+name: "Add Event (SI)"
+description: "Dodaj ali posodobi dogodek"
+title: "[EVENT SI]: "
+labels: ["event"]
+body:
+  - type: input
+    id: id
+    attributes:
+      label: "id"
+      description: "Unikaten ID dogodka"
+      placeholder: "2026-05-01-piknik-skupnosti"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: "date"
+      placeholder: "2026-05-01"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: actual
+    attributes:
+      label: "actual"
+      options:
+        - "false"
+        - "true"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: past
+    attributes:
+      label: "past"
+      options:
+        - "false"
+        - "true"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "title"
+      placeholder: "Piknik skupnosti TCS ng"
+    validations:
+      required: true
+
+  - type: input
+    id: flyer
+    attributes:
+      label: "flyer"
+      description: "Ime slike (brez ./event_imgs/)"
+      placeholder: "event-3.jpg"
+    validations:
+      required: true
+
+  - type: input
+    id: alt
+    attributes:
+      label: "alt"
+      placeholder: "Flyer: Piknik skupnosti TCS ng"
+    validations:
+      required: true
+
+  - type: textarea
+    id: short
+    attributes:
+      label: "short"
+      placeholder: "Kratek opis dogodka"
+    validations:
+      required: true
+
+  - type: textarea
+    id: long
+    attributes:
+      label: "long"
+      placeholder: "Dolg opis dogodka"
+    validations:
+      required: true
