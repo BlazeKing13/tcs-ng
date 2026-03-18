@@ -42,7 +42,7 @@
 
   // ---------- Reveal on scroll ----------
   function initReveals() {
-    const ids = ["heroInner", "aboutInner", "contactInner", "sponsorsInner"];
+    const ids = ["heroInner", "aboutInner", "contactInner"];
     const targets = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean);
