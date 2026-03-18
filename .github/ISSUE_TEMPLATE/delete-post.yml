@@ -1,0 +1,14 @@
+name: "Delete Post"
+description: "Remove post from posts.json"
+title: "[DELETE POST]: "
+labels: ["delete_post"]
+
+body:
+  - type: input
+    id: id
+    attributes:
+      label: "id"
+      description: "ID objave za brisanje"
+      placeholder: "2026-02-11-sabotin"
+    validations:
+      required: true
