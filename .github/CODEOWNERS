@@ -1,0 +1,17 @@
+# BlazeKing13 owner of all
+* @BlazeKing13
+
+# topex100 can work with images
+event_imgs/ @topex100 @MermoTom
+post_imgs/ @topex100 @MermoTom
+
+# JSON content must be approved by BlazeKing13
+events.json @BlazeKing13
+events_en.json @BlazeKing13
+posts.json @BlazeKing13
+posts_en.json @BlazeKing13
+
+# protect workflow automation too
+.github/workflows/ @BlazeKing13
+.github/scripts/ @BlazeKing13
+.github/ISSUE_TEMPLATE/ @BlazeKing13
