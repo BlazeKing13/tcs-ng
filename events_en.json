@@ -42,5 +42,16 @@
     "alt": "Flyer: TCS ng New Year get-together",
     "short": "Casual get-together for members and friends. Food/drinks by agreement.",
     "long": "Location: (add)\n\nBring: something for the grill or a drink.\n\nIf you’re coming, please send us an Instagram DM so we can plan roughly."
+  },
+  {
+    "id": "Vnos 1 - sestanek",
+    "date": "2026-4-18",
+    "actual": true,
+    "past": false,
+    "title": "E-MTB Enduro European Cup &amp; SloEnduro",
+    "flyer": "./event_imgs/TCS Dogodki- sestanek EU eMTB 1.jpg",
+    "alt": "TCS Dogodki- sestanek EU eMTB 1",
+    "short": "**The TCS Society from Nova Gorica** is once again hosting the opening race of the\nSloEnduro series in Slovenia on April 18th–19th.",
+    "long": "**The TCS Society from Nova Gorica** is once again hosting the opening race of the\n**SloEnduro** series in Slovenia. This year’s event is particularly prestigious, as it hosts both the\nnational series and the **E-MTB Enduro European Cup**, featuring two high-intensity &quot;power\nstage&quot; challenges.\n\nThe slopes above Nova Gorica provide the perfect terrain for a demanding, technical, and\nexciting competition. For e-categories, the two-day event kicks off on Saturday with &quot;power\nstages&quot; and continues on Sunday with the remaining challenges. One of the stages will exceed\n6 minutes in length, serving as a true test of fitness and focus. Also returning is the legendary\n&quot;**Borderless IX. Korpus**&quot; stage on Mt. Sabotin, where the start in Italy and the finish in\nSlovenia merge into one unforgettable experience.\n\n**More info:** [www.sloenduro.com](url)"
   }
 ]
