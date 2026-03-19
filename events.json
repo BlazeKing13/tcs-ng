@@ -31,5 +31,16 @@
     "alt": "Flyer: Piknik skupnosti TCS ng",
     "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
     "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
+  },
+  {
+    "id": "Vnos 1 - sestanek",
+    "date": "2026-04-18",
+    "actual": true,
+    "past": false,
+    "title": "Evropski pokal E-MTB Enduro in SloEnduro",
+    "flyer": "./event_imgs/TCS Dogodki- sestanek EU eMTB 1.jpg",
+    "alt": "Evropski pokal E-MTB Enduro in SloEnduro",
+    "short": "Društvo TCS iz Nove Gorice ponovno gosti uvodno tekmo serije SloEnduro v Sloveniji.",
+    "long": "**Društvo TCS iz Nove Gorice** ponovno gosti uvodno tekmo serije **SloEnduro** v Sloveniji.\nLetošnji dogodek je še posebej prestižen, saj poleg domačega pokala gosti tudi **evropski\npokal v e-MTB Enduru**, ki prinaša dve udarni preizkušnji na »power stage« etapah.\n\nPobočja nad Novo Gorico ponujajo idealen teren za zahtevno, tehnično in atraktivno\ntekmovanje. Dvodnevno dogajanje se za e-kategorije začne v soboto s »power stage« etapami,\nv nedeljo pa se nadaljuje s preostalimi izzivi. Ena izmed etap bo trajala več kot 6 minut, kar\nbo pravi preizkus kondicije in osredotočenosti. Ponovno bo na sporedu tudi legendarna etapa\n**Borderless IX. korpus** na Sabotinu, kjer se start v Italiji in cilj v Sloveniji zlijeta v\nnepozabno celoto.\n\n**Več o dogodku:** [www.sloenduro.com](url)"
   }
 ]
