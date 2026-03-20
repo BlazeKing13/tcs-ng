@@ -90,7 +90,7 @@ function longToHTML(text) {
         normalizeAsset(ev.flyer || ev.image || "./images/TCS.jpg"),
       );
       const alt = escapeHTML(ev.alt || ev.title || (isEN ? "Event" : "Dogodek"));
-      const short = escapeHTML(ev.short || "");
+      const short = ev.short ? marked.parse(ev.short) : "";
 
       article.innerHTML = `
         <div class="event-flyer">
