@@ -62,14 +62,11 @@
     return p;
   }
 
-  function longToHTML(text) {
-    const raw = String(text ?? "");
-    if (!raw.trim()) return "";
-    return raw
-      .split("\n")
-      .map((line) => `<p>${escapeHTML(line).replaceAll("  ", " &nbsp;")}</p>`)
-      .join("");
-  }
+function longToHTML(text) {
+  const raw = String(text ?? "");
+  if (!raw.trim()) return "";
+  return marked.parse(raw);
+}
 
   function renderPosts(list) {
     postsContainer.innerHTML = "";
