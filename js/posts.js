@@ -86,7 +86,7 @@ function longToHTML(text) {
 
       const title = escapeHTML(post.title);
       const date = formatDate(post.date);
-      const short = escapeHTML(post.short || "");
+      const short = ev.short ? marked.parse(ev.short) : "";
       const img = escapeHTML(
         normalizeAsset(post.image || post.img || "./images/TCS.jpg"),
       );
