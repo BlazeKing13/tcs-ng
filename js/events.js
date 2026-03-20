@@ -60,15 +60,11 @@
     return p;
   }
 
-  function longToHTML(text) {
-    const raw = String(text ?? "");
-    if (!raw.trim()) return "";
-    // preserve line breaks
-    return raw
-      .split("\n")
-      .map((line) => `<p>${escapeHTML(line).replaceAll("  ", " &nbsp;")}</p>`)
-      .join("");
-  }
+function longToHTML(text) {
+  const raw = String(text ?? "");
+  if (!raw.trim()) return "";
+  return marked.parse(raw);
+}
 
   function renderEvents(list, container) {
     if (!container) return;
