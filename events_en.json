@@ -42,5 +42,16 @@
     "alt": "Flyer: TCS ng New Year get-together",
     "short": "Casual get-together for members and friends. Food/drinks by agreement.",
     "long": "Location: (add)\n\nBring: something for the grill or a drink.\n\nIf you’re coming, please send us an Instagram DM so we can plan roughly."
+  },
+  {
+    "id": "E-MTB Enduro European Cup & SloEnduro",
+    "date": "2026-04-18",
+    "actual": true,
+    "past": false,
+    "title": "E-MTB Enduro European Cup & SloEnduro",
+    "flyer": "./event_imgs/TCS SloEnduro 2026 logo 1.jpg",
+    "alt": "TCS SloEnduro 2026 logo",
+    "short": "**The TCS Society, from Nova Gorica**, is once again hosting the opening race of the **SloEnduro series** in Slovenia, on April 18th - 19th.",
+    "long": "**The TCS Society, from Nova Gorica**, is once again hosting the opening race of the **SloEnduro series** in Slovenia. This year’s event is particularly prestigious, as it hosts both the national series and the **E-MTB Enduro European Cup**, featuring two high-intensity \"power stage\" challenges.\n\nThe slopes above Nova Gorica provide the perfect terrain for a demanding, technical, and exciting competition. For e-categories, the two-day event kicks off on Saturday with \"power stages\" and continues on Sunday with the remaining challenges. One of the stages will exceed 6 minutes in length, serving as a true test of fitness and focus. Also returning is the legendary **\"Borderless IX. Korpus\"** stage on Mt. Sabotin, where the start in Italy and the finish in Slovenia merge into one unforgettable experience.\n\n**More info:** [www.sloenduro.com](url)"
   }
 ]

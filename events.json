@@ -1,35 +1,13 @@
 [
   {
-    "id": "2026-03-10-delovna-akcija-skalnica",
-    "date": "2026-03-10",
+    "id": "Evropski pokal E-MTB Enduro in SloEnduro SLO",
+    "date": "2026-04-18",
     "actual": true,
     "past": false,
-    "title": "Freeriders",
-    "flyer": "./event_imgs/TCS.jpg",
-    "alt": "Flyer: Freeriders in the mountains",
-    "short": "Zbor ob 8:00. 8:30 start od TCS štaba do spusta",
-    "long": "Zbor: 8:00, parkirišče pri TCS štabu.\n\nPrinesi: vodo in kakšno energijsko tablico.\n\nPo akciji druženje, ter pijača in jedača. Če se druženja ne boš udeležil, sporoči prej."
-  },
-  {
-    "id": "2026-04-05-skabrjelka-dan-proge",
-    "date": "2026-04-05",
-    "actual": false,
-    "past": false,
-    "title": "Škabrjelka — Dan proge",
-    "flyer": "./event_imgs/event-2.jpg",
-    "alt": "Flyer: Škabrjelka — Dan proge",
-    "short": "Skupinski ogledi linije, varnostni briefing in druženje. Primerno za vse.",
-    "long": "Program:\n\n10:00 — zbor + briefing\n11:00 — vodene vožnje (skupine po nivoju)\n13:00 — druženje in Q&A\n\nVarnost: čelada obvezna, priporočamo ščitnike."
-  },
-  {
-    "id": "2026-05-01-piknik-skupnosti",
-    "date": "2026-05-01",
-    "actual": false,
-    "past": false,
-    "title": "Piknik skupnosti TCS ng",
-    "flyer": "./event_imgs/event-3.jpg",
-    "alt": "Flyer: Piknik skupnosti TCS ng",
-    "short": "Neformalno druženje članov in prijateljev. Hrana/pijača po dogovoru.",
-    "long": "Lokacija: (dodaj)\n\nPrinesi: nekaj za na žar ali pijačo.\n\nČe prideš, prosimo napiši DM na Instagram, da okvirno planiramo."
+    "title": "Evropski pokal E-MTB Enduro in SloEnduro",
+    "flyer": "./event_imgs/TCS SloEnduro 2026 logo 1.jpg",
+    "alt": "Evropski pokal E-MTB Enduro in SloEnduro",
+    "short": "Društvo TCS, iz Nove Gorice, gosti uvodno tekmo serije SloEnduro v Sloveniji, ki bo 18. in 19. aprila 2026.",
+    "long": "**Društvo TCS**, iz Nove Gorice, ponovno gosti uvodno tekmo serije **SloEnduro** v Sloveniji. Letošnji dogodek je še posebej prestižen, saj poleg domačega pokala gosti tudi **evropski pokal v e-MTB Enduru**, ki prinaša dve udarni preizkušnji na »power stage« etapah.\n\nPobočja nad Novo Gorico ponujajo idealen teren za zahtevno, tehnično in atraktivno tekmovanje. Dvodnevno dogajanje se za e-kategorije začne v soboto, s »power stage« etapami, v nedeljo pa se nadaljuje s preostalimi izzivi. Ena izmed etap bo trajala več kot 6 minut, kar bo pravi preizkus kondicije in osredotočenosti. Ponovno bo na sporedu tudi legendarna etapa **Borderless IX. korpus**, na Sabotinu, kjer se start v Italiji in cilj v Sloveniji, zlijeta v nepozabno celoto.\n\n**Več o dogodku:** [www.sloenduro.com](url)"
   }
 ]
