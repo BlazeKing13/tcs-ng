@@ -2,7 +2,7 @@
   {
     "id": "2026-02-05-poziv",
     "date": "2026-02-05",
-    "important": false,
+    "important": true,
     "title": "Poziv: več pomoči na delovnih akcijah",
     "image": "./post_imgs/TCS delovna akcija.jpg",
     "alt": "Delovna akcija",
