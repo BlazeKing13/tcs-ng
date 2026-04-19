@@ -52,7 +52,7 @@
   {
     "id": "OBVESTILO_zaprtje_prog_april1",
     "date": "2026-04-07",
-    "important": true,
+    "important": false,
     "title": "OBVESTILO",
     "image": "./post_imgs/obvestillo_zaprtja_prog.jpg",
     "alt": "OBVESTILO_zaprtje_prog",
