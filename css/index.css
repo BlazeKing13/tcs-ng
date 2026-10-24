@@ -1345,3 +1345,10 @@ html {
 #intro-animation{
   transition: opacity .6s ease;
 }
+
+
+
+
+#intro-animation {
+  display: none !important;
+}
